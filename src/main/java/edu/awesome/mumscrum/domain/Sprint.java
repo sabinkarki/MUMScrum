@@ -22,7 +22,7 @@ public class Sprint {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Transient
-	private List<Story> stories;
+	private List<UserStory> stories;
 	private Date startDate;
 	private Date endDate;
 
@@ -41,11 +41,11 @@ public class Sprint {
 		this.id = id;
 	}
 
-	public List<Story> getStories() {
+	public List<UserStory> getStories() {
 		return stories;
 	}
 
-	public void setStories(List<Story> stories) {
+	public void setStories(List<UserStory> stories) {
 		this.stories = stories;
 	}
 
