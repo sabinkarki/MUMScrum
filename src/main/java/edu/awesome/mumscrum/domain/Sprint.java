@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 /**
@@ -24,6 +23,7 @@ public class Sprint {
 	private int id;
 	@OneToMany
 	private List<UserStory> userStories;
+
 	private Date startDate;
 	private Date endDate;
 
@@ -42,12 +42,12 @@ public class Sprint {
 		this.id = id;
 	}
 
-	public List<UserStory> getStories() {
+	public List<UserStory> getUserStories() {
 		return userStories;
 	}
 
-	public void setStories(List<UserStory> stories) {
-		this.userStories = stories;
+	public void setUserStories(List<UserStory> userStories) {
+		this.userStories = userStories;
 	}
 
 	public Date getStartDate() {

@@ -1,5 +1,4 @@
 package edu.awesome.mumscrum.domain;
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -55,6 +54,6 @@ public class UserStory {
 	public UserStory() {
 		// super();
 	}
-	
+
 
 }
