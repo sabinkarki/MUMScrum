@@ -15,12 +15,18 @@
 	</div>
 	<!-- Top Menu Items -->
 	<ul class="nav navbar-right top-nav">
-		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown"><b class="caret"></b>Product 1</a>
+		<li class="dropdown">
+<c:if test="${not empty product}">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b>
+    <c:out value="${product}"></c:out>
+    </a>
+</c:if>
+
+		
 			<ul class="dropdown-menu alert-dropdown">
 				<li><a href="#">Product 2</a></li>
 				<li><a href="#">Product 2</a></li>
-				<li><a href="<c:url value='/product/new' />"><i
+				<li><a href="<c:url value='/product/new'/>"><i
 						class="fa fa-fw fa-envelope"></i> Create product</a></li>
 			</ul></li>
 		<li class="dropdown"><a href="#" class="dropdown-toggle"

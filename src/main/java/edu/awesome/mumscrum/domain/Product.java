@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="product")
@@ -20,12 +21,12 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotNull
+	@Size(min=3, max=50)
 	@Column(name ="name",nullable=false)
 	private String name;
 	
-	@NotNull
-	@Column(name ="startDate",nullable=false)
+	//@NotNull
+	//@Column(name ="startDate",nullable=false)
 	private Date startDate;
 	private List<UserStory> userStoryList;
 	
