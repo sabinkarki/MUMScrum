@@ -1,32 +1,39 @@
 package edu.awesome.mumscrum.domain;
+
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import edu.awesome.mumscrum.enums.Status;
 
 @Entity
 public class UserStory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
-	/*
-	 * @Column(name = "brand_name") private String brandName;
-	 * 
-	 * @Column(name = "model_name") private String modelName;
-	 * 
-	 * @ManyToOne(cascade = CascadeType.ALL) private AssetCategory
-	 * assetcategory;
-	 */
+	private String title;
 
-	@Column(name = "content")
 	private String content;
 
-	@Column(name = "created_date")
+	@Temporal(value = TemporalType.DATE)
 	private Date createdDate;
+
+	@OneToMany
+	private List<User> users;
+
+	@Enumerated(EnumType.STRING)
+	private Status status;
 
 	@Column(name = "estimationg_effort_for_developer")
 	private Double estimationgEffortForDeveloper;
@@ -36,24 +43,89 @@ public class UserStory {
 	private Double estimationgRemainingEffortForDeveloper;
 	@Column(name = "estimationg_remaining_effort_for_tester")
 	private Double estimationgRemainingEffortForTester;
-	@Column(name = "status")
-	private int status;
-
-	/*
-	 * @ManyToOne(cascade = CascadeType.ALL) private User developer;
-	 * 
-	 * @ManyToOne(cascade = CascadeType.ALL) private User tester;
-	 * 
-	 * @ManyToOne(cascade = CascadeType.ALL) private Release release;
-	 * 
-	 * @ManyToOne(cascade = CascadeType.ALL) private Sprint sprint;
-	 * 
-	 * @ManyToOne(cascade = CascadeType.ALL) private Product product;
-	 */
 
 	public UserStory() {
 		// super();
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Double getEstimationgEffortForDeveloper() {
+		return estimationgEffortForDeveloper;
+	}
+
+	public void setEstimationgEffortForDeveloper(Double estimationgEffortForDeveloper) {
+		this.estimationgEffortForDeveloper = estimationgEffortForDeveloper;
+	}
+
+	public Double getEstimationgEffortForTester() {
+		return estimationgEffortForTester;
+	}
+
+	public void setEstimationgEffortForTester(Double estimationgEffortForTester) {
+		this.estimationgEffortForTester = estimationgEffortForTester;
+	}
+
+	public Double getEstimationgRemainingEffortForDeveloper() {
+		return estimationgRemainingEffortForDeveloper;
+	}
+
+	public void setEstimationgRemainingEffortForDeveloper(Double estimationgRemainingEffortForDeveloper) {
+		this.estimationgRemainingEffortForDeveloper = estimationgRemainingEffortForDeveloper;
+	}
+
+	public Double getEstimationgRemainingEffortForTester() {
+		return estimationgRemainingEffortForTester;
+	}
+
+	public void setEstimationgRemainingEffortForTester(Double estimationgRemainingEffortForTester) {
+		this.estimationgRemainingEffortForTester = estimationgRemainingEffortForTester;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 }

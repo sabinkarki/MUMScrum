@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -19,24 +18,21 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.awesome.mumscrum.enums.Role;
 
-@Entity(name = "User")
+@Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@NotBlank
-	@Column(name = "Name")
 	private String name;
 
 	@NotBlank
 	@Email(message = "Please enter valid email address")
-	@Column(name = "Email")
 	private String email;
 
 	private String phone;
-	
-	@Column
+
 	private String imageUrl;
 
 	@Transient
@@ -50,10 +46,9 @@ public class User {
 
 	@NotEmpty
 	@Size(min = 5, max = 8)
-	@Column(name = "Username")
 	private String username;
 
-	@NotNull
+	@NotBlank
 	private String password;
 
 	@Transient
@@ -110,7 +105,6 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Role")
 	private Role role;
-
 
 	public String getName() {
 		return name;

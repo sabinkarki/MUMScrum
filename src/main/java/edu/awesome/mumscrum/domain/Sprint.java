@@ -6,11 +6,15 @@ package edu.awesome.mumscrum.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author prabinadhikari
@@ -21,10 +25,12 @@ public class Sprint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<UserStory> userStories;
 
+	@Temporal(value = TemporalType.DATE)
 	private Date startDate;
+	@Temporal(value = TemporalType.DATE)
 	private Date endDate;
 
 	/**

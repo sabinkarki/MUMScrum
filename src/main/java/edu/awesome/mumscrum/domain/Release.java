@@ -1,39 +1,44 @@
 package edu.awesome.mumscrum.domain;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
+@Table(name = "pRelease")
 public class Release {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
-	@NotNull
-	@Column(name="name",nullable=false)
+
+	@NotBlank
 	private String name;
-	
-	@NotNull
-	@Version
-	@Column(name="version",nullable=false)
+
+	@NotBlank
 	private String version;
-	
-	@NotNull
-	@Column(name="date", nullable=false)
-	private Date date;
-	
-	
-	private long product;
+
+	@NotBlank
+	@Temporal(value = TemporalType.DATE)
+	private Date releaseDate;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Sprint> sprintList;
+
+	public Release() {
+
+	}
 
 	public long getId() {
 		return id;
@@ -59,27 +64,20 @@ public class Release {
 		this.version = version;
 	}
 
-	public Date getDate() {
-		return date;
+	public List<Sprint> getSprintList() {
+		return sprintList;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="product_id",nullable=false)
-	public long getProduct() {
-		return product;
+	public void setSprintList(List<Sprint> sprintList) {
+		this.sprintList = sprintList;
 	}
 
-	public void setProduct(long product) {
-		this.product = product;
+	public Date getReleaseDate() {
+		return releaseDate;
 	}
-	
-	
-	
-	
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
 
 }
