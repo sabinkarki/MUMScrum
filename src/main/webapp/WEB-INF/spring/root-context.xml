@@ -25,7 +25,9 @@
 		<property name="hibernateProperties" ref="hibernateProperties" />
 		<property name="annotatedClasses">
 			<list>
-				<!-- <value>com.demo.user.domain.User</value> -->
+				<value>edu.awesome.mumscrum.domain.Sprint</value>
+				<value>edu.awesome.mumscrum.domain.Worklog</value>
+				<value>edu.awesome.mumscrum.domain.UserStory</value>
 			</list>
 		</property>
 	</bean>

@@ -4,33 +4,37 @@
 package edu.awesome.mumscrum.domain;
 
 import java.util.Date;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.apache.commons.collections.map.HashedMap;
+
 /**
  * @author prabinadhikari
  *
  */
-@Entity
+// @Entity
 public class Worklog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	String storyID;
-	String releaseId;
 	String productID;
-	Date createdDate;
-	Double estimationgRemainingEffortForDeveloper;
-	Double estimationgRemainingEffortForTester;
+	Map<Date, Double> storyWorklogMap;
+	Map<String, Map<Date, Double>> sprintWorkligMap;
+	Map<String, Map<String, Map<Date, Double>>> releaseWorklogMap;
 
 	/**
 	 * 
 	 */
 	public Worklog() {
-		// TODO Auto-generated constructor stub
+		storyWorklogMap = new HashedMap();
+		sprintWorkligMap = new HashedMap();
+		releaseWorklogMap = new HashedMap();
 	}
 
 	public int getId() {
@@ -41,52 +45,12 @@ public class Worklog {
 		this.id = id;
 	}
 
-	public String getStoryID() {
-		return storyID;
-	}
-
-	public void setStoryID(String storyID) {
-		this.storyID = storyID;
-	}
-
-	public String getReleaseId() {
-		return releaseId;
-	}
-
-	public void setReleaseId(String releaseId) {
-		this.releaseId = releaseId;
-	}
-
 	public String getProductID() {
 		return productID;
 	}
 
 	public void setProductID(String productID) {
 		this.productID = productID;
-	}
-
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public Double getEstimationgRemainingEffortForDeveloper() {
-		return estimationgRemainingEffortForDeveloper;
-	}
-
-	public void setEstimationgRemainingEffortForDeveloper(Double estimationgRemainingEffortForDeveloper) {
-		this.estimationgRemainingEffortForDeveloper = estimationgRemainingEffortForDeveloper;
-	}
-
-	public Double getEstimationgRemainingEffortForTester() {
-		return estimationgRemainingEffortForTester;
-	}
-
-	public void setEstimationgRemainingEffortForTester(Double estimationgRemainingEffortForTester) {
-		this.estimationgRemainingEffortForTester = estimationgRemainingEffortForTester;
 	}
 
 }
