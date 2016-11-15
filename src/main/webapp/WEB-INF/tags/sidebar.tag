@@ -46,7 +46,7 @@
 		<ul class="nav navbar-nav side-nav">
 			<li class="active"><a href="<c:url value='/product/{id}' />"><i
 					class="fa fa-fw fa-dashboard"></i>Product</a></li>
-			<li><a href="<c:url value='/userstory/list' />"><i
+			<li class="userstorymenu"><a href="<c:url value='/userstory/list' />"><i
 					class="fa fa-fw fa-dashboard"></i>User Stories</a></li>
 			<li><a href="<c:url value='/release/list' />"><i
 					class="fa fa-fw fa-bar-chart-o"></i>Releases</a></li>

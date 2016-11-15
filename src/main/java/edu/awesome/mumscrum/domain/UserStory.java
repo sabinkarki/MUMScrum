@@ -48,6 +48,7 @@ public class UserStory {
 		// super();
 	}
 
+
 	public long getId() {
 		return id;
 	}
