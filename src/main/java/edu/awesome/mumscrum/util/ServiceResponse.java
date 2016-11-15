@@ -1,4 +1,4 @@
-package edu.awesome.mumscrum.service;
+package edu.awesome.mumscrum.util;
 
 import java.util.HashMap;
 import java.util.Map;
