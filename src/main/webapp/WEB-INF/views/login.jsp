@@ -12,18 +12,18 @@
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/bootstrap/css/bootstrap.css">
+	href="${pageContext.request.contextPath }/resources/css/bootstrap.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/bootstrap/css/bootstrap.min.css">
+	href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/bootstrap/css/bootstrap-theme.css">
+	href="${pageContext.request.contextPath }/resources/sscss/bootstrap-theme.css">
 
 
 <script
-	src="${pageContext.request.contextPath }/resources/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+	src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 <%-- <link type="text/css" rel="stylesheet"
 	href="<c:url value='resources/css/style.css'/>" /> --%>
-	<link type="text/css" rel="stylesheet"
+<link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/style1.css" />
 </head>
 <body>
@@ -37,7 +37,8 @@
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">×</button>
 					<h1 class="text-center">Login</h1>
-				</div><!-- modal-header -->
+				</div>
+				<!-- modal-header -->
 				<div class="modal-body">
 					<form class="form col-md-12 center-block form-signin"
 						<%-- 			action='<spring:url value="/j_spring_security_check"></spring:url>' --%>
@@ -55,19 +56,24 @@
 							<label> <input type="checkbox"> Remember me
 							</label>
 						</div>
-						<button type="submit" class="btn btn-primary btn-lg btn-block" value="Login">Sign
-							in</button>
-				
-				</form>
-			</div><!-- modal body -->
-			<div class="modal-footer">
-				<div class="col-md-12">
-					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+						<button type="submit" class="btn btn-primary btn-lg btn-block"
+							value="Login">Sign in</button>
+
+					</form>
 				</div>
-			</div><!-- modal-footer -->
-		</div><!-- modal-content -->
-	</div><!-- modal-dialog -->
-	</div><!-- modal show -->
+				<!-- modal body -->
+				<div class="modal-footer">
+					<div class="col-md-12">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+					</div>
+				</div>
+				<!-- modal-footer -->
+			</div>
+			<!-- modal-content -->
+		</div>
+		<!-- modal-dialog -->
+	</div>
+	<!-- modal show -->
 </body>
 </html>
 
