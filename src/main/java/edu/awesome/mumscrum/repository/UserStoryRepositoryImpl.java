@@ -7,53 +7,57 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import edu.awesome.mumscrum.domain.Product;
+import edu.awesome.mumscrum.domain.UserStory;
 
+/**
+ * @author prabinadhikari
+ *
+ */
 @Repository
-public class ProductRepositoryImpl implements ProductRepository {
+public class UserStoryRepositoryImpl implements UserStoryRepository {
 	@Inject
 	private SessionFactory factory;
 
 	/**
 	 * 
 	 */
-	public ProductRepositoryImpl() {
+	public UserStoryRepositoryImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void save(Product product) {
+	public void save(UserStory userStory) {
 		Session session = factory.getCurrentSession();
-		session.save(product);
+		session.save(userStory);
 		session.close();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Product> getProducts() {
+	public List<UserStory> getUserStories() {
 		Session session = factory.getCurrentSession();
-		List<Product> products = session.createQuery("from Product").list();
+		List<UserStory> userStories = session.createQuery("from UserStory").list();
 		session.close();
-		return products;
+		return userStories;
 	}
 
 	@Override
-	public void update(Product product) {
+	public void update(UserStory userStory) {
 		Session session = factory.getCurrentSession();
-		session.update(product);
+		session.update(userStory);
 		session.flush();
 		session.close();
 	}
 
 	@Override
-	public void delete(Long productId) {
+	public void delete(Long userStoryId) {
 		Session session = factory.getCurrentSession();
-		Product product = (Product) session.get(Product.class, productId);
+		Product product = (Product) session.get(Product.class, userStoryId);
 		if (product != null) {
 			session.delete(product);
 			session.flush();
@@ -62,13 +66,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public Product findById(Long id) {
-		Session session = factory.getCurrentSession();
-		Product product = (Product) session.get(Product.class, id);
-		Hibernate.initialize(product.getReleaseList());
-
-		session.close();
-		return product;
+	public UserStory getUserStory(Long id) {
+		return null;
 	}
 
 }
