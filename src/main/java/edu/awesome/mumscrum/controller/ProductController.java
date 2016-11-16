@@ -18,7 +18,7 @@ import edu.awesome.mumscrum.service.ProductService;
 public class ProductController {
 
 	@Inject
-	ProductService productService;
+	private ProductService productService;
 
 	@RequestMapping(value = { "product/new" }, method = RequestMethod.GET)
 	public String newProduct(Model model) {

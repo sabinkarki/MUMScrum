@@ -20,7 +20,7 @@ import edu.awesome.mumscrum.repository.ProductRepository;
 public class ProductServiceImpl implements ProductService {
 
 	@Inject
-	ProductRepository productRepository;
+	private ProductRepository productRepository;
 
 	/**
 	 * 
