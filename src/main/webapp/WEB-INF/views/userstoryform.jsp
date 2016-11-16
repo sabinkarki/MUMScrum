@@ -26,7 +26,7 @@
 
 
 						<h1 class="page-header">
-							Dashboard <small>Add UserStory</small>
+							Add User Story
 						</h1>
 						<form:form role="form" method="POST" modelAttribute="userstory"
 							id="userstory">

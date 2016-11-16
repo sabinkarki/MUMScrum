@@ -3,16 +3,13 @@
  */
 package edu.awesome.mumscrum.service;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import edu.awesome.mumscrum.domain.Product;
 import edu.awesome.mumscrum.domain.Release;
-import edu.awesome.mumscrum.repository.ProductRepository;
 import edu.awesome.mumscrum.repository.ReleaseRepository;
 
 /**

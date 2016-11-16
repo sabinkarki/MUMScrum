@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.awesome.mumscrum.domain.Product;
+import edu.awesome.mumscrum.domain.Release;
 import edu.awesome.mumscrum.service.ProductService;
 import edu.awesome.mumscrum.service.ReleaseService;
 
@@ -20,26 +21,24 @@ import edu.awesome.mumscrum.service.ReleaseService;
 public class ReleaseController {
 
 	@Inject
-	ReleaseService releaseService;
 	ProductService productService;
 	
-	@RequestMapping(value = { "release/" }, method = RequestMethod.GET)
-	public String release(Model model) {
-
-		//model.addAttribute("releaseList", releaseService.getReleasesByProductId()));
-		model.addAttribute("edit", false);
-		return "productform";
+	@RequestMapping(value = { "release/product/{productId}" }, method = RequestMethod.GET)
+	public String release(@PathVariable long productId,Model model) {
+		Product product = productService.findById(productId);
+		model.addAttribute(product);
+		return "releaselist";
 
 	}
-//
-//	@RequestMapping(value = { "product/new" }, method = RequestMethod.GET)
-//	public String newProduct(Model model) {
-//
-//		model.addAttribute("product", new Product());
-//		model.addAttribute("edit", false);
-//		return "productform";
-//
-//	}
+
+	@RequestMapping(value = { "release/new" }, method = RequestMethod.GET)
+	public String newProduct(Model model) {
+
+		model.addAttribute("release", new Release());
+		model.addAttribute("edit", false);
+		return "releaseForm";
+
+	}
 //
 //	@RequestMapping(value = { "product/new" }, method = RequestMethod.POST)
 //	public String createProduct(@Valid Product product, BindingResult result, ModelMap model, HttpSession session) {

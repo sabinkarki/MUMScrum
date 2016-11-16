@@ -23,7 +23,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<h1 class="page-header">
-							Product
+							Releases
 						</h1>
 
 					</div>
@@ -32,10 +32,16 @@
 
 
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-12">
 
 						<div class="table-responsive">
-							<table class="table table-hover">
+						<c:choose>
+				<c:when test="${ empty product.getReleaseList()}">
+				<div class="alert alert-info" role="alert">No releases added yet <a href="#" >Add new release </a></div>
+					
+				</c:when>
+				<c:otherwise>
+					<table class="table table-hover">
 								<thead>
 									<tr>
 										<th>Name</th>
@@ -45,8 +51,8 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>${product.getName()}</td>
-										<td>${product.getStartDate()}</td>
+										<td>Release1</td>
+										<td>Release1 Date</td>
 										<td>
 										<c:out value="${product.getReleaseList()}" ></c:out>
 										</td>
@@ -55,6 +61,9 @@
 									
 								</tbody>
 							</table>
+				</c:otherwise>
+			</c:choose>
+							
 						</div>
 
 					</div>

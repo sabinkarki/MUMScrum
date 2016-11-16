@@ -15,8 +15,9 @@
 	</div>
 	<!-- Top Menu Items -->
 	<ul class="nav navbar-right top-nav">
-		<li class="dropdown"><c:choose>
-				<c:when test="${setSelected}">
+		<li class="dropdown">
+		<c:choose>
+				<c:when test="${not empty selectedProductId}">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b
 						class="caret"></b> <c:out value="${product.name}"></c:out> </a>
 				</c:when>
@@ -48,8 +49,8 @@
 
 			<li class="userstorymenu active"><a
 				href="<c:url value='/userstory/list' />"><i
-					class="fa fa-fw fa-dashboard"></i>User Stories</a></li>
-			<li><a href="<c:url value='/release/list' />"><i
+					class="fa fa-fw fa-dashboard"></i>Product Backlog</a></li>
+			<li><a href="<c:url value='/release/product/${selectedProductId}' />"><i
 					class="fa fa-fw fa-bar-chart-o"></i>Releases</a></li>
 
 		</ul>

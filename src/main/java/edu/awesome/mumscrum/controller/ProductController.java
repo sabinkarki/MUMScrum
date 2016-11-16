@@ -48,13 +48,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/{id}")
-	public String showProduct(@PathVariable long id, Model model,HttpSession session){
-		Product product = productService.findById(id);
-
-		model.addAttribute(product);
-
-
-		model.addAttribute("setSelected",true);
+	public String showProduct(@PathVariable long id, Model model){
+		
+		model.addAttribute("selectedProductId",id);
 		return "product";
 		
 	}
