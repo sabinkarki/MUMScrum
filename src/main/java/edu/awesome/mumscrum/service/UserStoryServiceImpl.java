@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import edu.awesome.mumscrum.domain.UserStory;
+import edu.awesome.mumscrum.repository.UserStoryRepository;
 
 /**
  * @author prabinadhikari
@@ -19,7 +20,7 @@ import edu.awesome.mumscrum.domain.UserStory;
 public class UserStoryServiceImpl implements UserStoryService {
 
 	@Inject
-	UserStoryService userStoryService;
+	UserStoryRepository userStoryRepository;
 
 	/**
 	 * 
@@ -29,28 +30,28 @@ public class UserStoryServiceImpl implements UserStoryService {
 
 	@Override
 	public void save(UserStory userStory) {
-		userStoryService.save(userStory);
+		userStoryRepository.save(userStory);
 
 	}
 
 	@Override
 	public List<UserStory> getUserStories() {
-		return userStoryService.getUserStories();
+		return userStoryRepository.getUserStories();
 	}
 
 	@Override
 	public void update(UserStory userStory) {
-		userStoryService.update(userStory);
+		userStoryRepository.update(userStory);
 	}
 
 	@Override
 	public UserStory getUserStory(Long id) {
-		return userStoryService.getUserStory(id);
+		return userStoryRepository.getUserStory(id);
 	}
 
 	@Override
 	public void delete(Long userStoryId) {
-		userStoryService.delete(userStoryId);
+		userStoryRepository.delete(userStoryId);
 	}
 
 }
