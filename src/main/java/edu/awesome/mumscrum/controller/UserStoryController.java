@@ -22,7 +22,7 @@ import edu.awesome.mumscrum.service.UserStoryService;
 @Controller
 public class UserStoryController {
 	@Inject
-	private UserStoryService UserStoryController;
+	private UserStoryService userStoryService;
 
 	@RequestMapping(value = { "userstory/new" }, method = RequestMethod.GET)
 	public String newUserstory(Model model) {
