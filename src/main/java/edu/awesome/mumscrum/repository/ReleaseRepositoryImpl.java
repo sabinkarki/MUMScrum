@@ -7,68 +7,69 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import edu.awesome.mumscrum.domain.Product;
+import edu.awesome.mumscrum.domain.Release;
 
 @Repository
-public class ProductRepositoryImpl implements ProductRepository {
+public class ReleaseRepositoryImpl implements ReleaseRepository {
 	@Inject
 	SessionFactory factory;
 
 	/**
 	 * 
 	 */
-	public ProductRepositoryImpl() {
+	public ReleaseRepositoryImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void save(Product product) {
+	public void save(Release release) {
 		Session session = factory.getCurrentSession();
-		session.save(product);
+		session.save(release);
 		session.close();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Product> getProducts() {
+	public List<Release> getReleases() {
 		Session session = factory.getCurrentSession();
-		List<Product> products = session.createQuery("from Product").list();
+		List<Release> products = session.createQuery("from Release").list();
 		session.close();
 		return products;
 	}
 
 	@Override
-	public void update(Product product) {
+	public void update(Release release) {
 		Session session = factory.getCurrentSession();
-		session.update(product);
+		session.update(release);
 		session.flush();
 		session.close();
 	}
 
 	@Override
-	public void delete(Long productId) {
+	public void delete(Long id) {
 		Session session = factory.getCurrentSession();
-		Product product = (Product) session.get(Product.class, productId);
-		if (product != null) {
-			session.delete(product);
+		Release release = (Release) session.get(Release.class, id);
+		if (release != null) {
+			session.delete(release);
 			session.flush();
 		}
 		session.close();
 	}
 
 	@Override
-	public Product findById(Long id) {
+	public Release findById(Long id) {
 		Session session = factory.getCurrentSession();
-		Product product = (Product) session.get(Product.class, id);
-		Hibernate.initialize(product.getReleaseList());
-
+		Release release = (Release) session.get(Release.class, id);
 		session.close();
-		return product;
+		return release;
 	}
+
+	
 
 }

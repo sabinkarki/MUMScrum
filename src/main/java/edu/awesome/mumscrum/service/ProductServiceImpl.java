@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 import edu.awesome.mumscrum.domain.Product;
 import edu.awesome.mumscrum.repository.ProductRepository;
 
-/**
- * @author prabinadhikari
- *
- */
+
 @Service
 public class ProductServiceImpl implements ProductService {
 

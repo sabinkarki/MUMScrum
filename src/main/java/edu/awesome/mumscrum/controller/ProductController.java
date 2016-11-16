@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -13,8 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import edu.awesome.mumscrum.domain.Product;
 import edu.awesome.mumscrum.service.ProductService;
@@ -50,7 +49,11 @@ public class ProductController {
 	
 	@RequestMapping("/product/{id}")
 	public String showProduct(@PathVariable long id, Model model,HttpSession session){
-		model.addAttribute(productService.findById(id));
+		Product product = productService.findById(id);
+
+		model.addAttribute(product);
+
+
 		model.addAttribute("setSelected",true);
 		return "product";
 		

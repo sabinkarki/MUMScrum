@@ -48,7 +48,7 @@
 										<td>${product.getName()}</td>
 										<td>${product.getStartDate()}</td>
 										<td>
-										Test
+										<c:out value="${product.getReleaseList()}" ></c:out>
 										</td>
 									</tr>
 									
