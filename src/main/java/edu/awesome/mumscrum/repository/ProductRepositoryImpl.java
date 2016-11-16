@@ -13,10 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import edu.awesome.mumscrum.domain.Product;
 
-/**
- * @author prabinadhikari
- *
- */
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
 	@Inject
@@ -65,9 +61,11 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public Product getProduct(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Product findById(Long id) {
+		Session session = factory.getCurrentSession();
+		Product product = (Product) session.get(Product.class, id);
+		session.close();
+		return product;
 	}
 
 }

@@ -12,7 +12,6 @@
 <body>
  <div id="wrapper">
 
-     <h:sidebar/>
 
         <div id="page-wrapper">
 
@@ -43,10 +42,10 @@
                             
                             <c:choose>
                             <c:when test="${edit}">
-                            	<button type="submit" class="btn btn-default">Update </button>
+                            	<button type="submit" class="btn btn-info">Update </button>
                             </c:when>
                             <c:otherwise>
-                            	<button type="submit" class="btn btn-default">Save </button>
+                            	<button type="submit" class="btn btn-info">Save </button>
                             
                             </c:otherwise>
                             </c:choose>

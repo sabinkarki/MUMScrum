@@ -15,19 +15,20 @@
 	</div>
 	<!-- Top Menu Items -->
 	<ul class="nav navbar-right top-nav">
-		<li class="dropdown">
-<c:if test="${not empty product}">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b>
-    <c:out value="${product}"></c:out>
-    </a>
-</c:if>
+		<li class="dropdown"><c:choose>
+				<c:when test="${setSelected}">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b
+						class="caret"></b> <c:out value="${product.name}"></c:out> </a>
+				</c:when>
+				<c:otherwise>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b
+						class="caret"></b>ProductList </a>
+				</c:otherwise>
+			</c:choose>
 
-		
-			<ul class="dropdown-menu alert-dropdown">
-				<li><a href="#">Product 2</a></li>
-				<li><a href="#">Product 2</a></li>
-				<li><a href="<c:url value='/product/new'/>"><i
-						class="fa fa-fw fa-envelope"></i> Create product</a></li>
+
+			<ul class="dropdown-menu alert-dropdown" id="productListDropdown">
+
 			</ul></li>
 		<li class="dropdown"><a href="#" class="dropdown-toggle"
 			data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b
@@ -44,9 +45,9 @@
 	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav side-nav">
-			<li class="active"><a href="<c:url value='/product/{id}' />"><i
-					class="fa fa-fw fa-dashboard"></i>Product</a></li>
-			<li class="userstorymenu"><a href="<c:url value='/userstory/list' />"><i
+
+			<li class="userstorymenu active"><a
+				href="<c:url value='/userstory/list' />"><i
 					class="fa fa-fw fa-dashboard"></i>User Stories</a></li>
 			<li><a href="<c:url value='/release/list' />"><i
 					class="fa fa-fw fa-bar-chart-o"></i>Releases</a></li>

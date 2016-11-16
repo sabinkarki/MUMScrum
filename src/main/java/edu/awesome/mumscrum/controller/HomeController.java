@@ -1,6 +1,7 @@
 package edu.awesome.mumscrum.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -11,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
 	@RequestMapping
-	public String home() {
-		return "home";
+	public String home(Model model) {
+		model.addAttribute("product",null);
+		return "userstorylist";
 	}
 
 	@RequestMapping(value = "/login")

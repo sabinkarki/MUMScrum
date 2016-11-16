@@ -13,5 +13,10 @@
 <script>
 $( function() {
   $( ".datepicker").datepicker();
+  
+  $("#productListDropdown").load("/mumscrum/product/list", function(data, status){
+		console.log(data);
+     
+  });
 } );
 </script>

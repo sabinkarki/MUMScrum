@@ -31,6 +31,8 @@ public class Product {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Release> releaseList;
 
+	
+
 	public long getId() {
 		return id;
 	}
@@ -58,5 +60,11 @@ public class Product {
 	public List<Release> getReleaseList() {
 		return releaseList;
 	}
+	
+	public void setReleaseList(List<Release> releaseList) {
+		this.releaseList = releaseList;
+	}
+	
+	
 
 }

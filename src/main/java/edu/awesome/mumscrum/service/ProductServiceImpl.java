@@ -3,6 +3,7 @@
  */
 package edu.awesome.mumscrum.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,13 +31,14 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void save(Product product) {
+		product.setStartDate(new Date());
 		productRepository.save(product);
 	}
 
 	@Override
 	public List<Product> getProducts() {
 		// TODO Auto-generated method stub
-		return null;
+		return productRepository.getProducts();
 	}
 
 	@Override
@@ -52,9 +54,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product getProduct(Long id) {
+	public Product findById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return productRepository.findById(id);
+		
+
 	}
 
 }

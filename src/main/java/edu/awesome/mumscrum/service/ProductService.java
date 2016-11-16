@@ -7,10 +7,7 @@ import java.util.List;
 
 import edu.awesome.mumscrum.domain.Product;
 
-/**
- * @author prabinadhikari
- *
- */
+
 public interface ProductService {
 
 	public void save(Product product);
@@ -21,6 +18,6 @@ public interface ProductService {
 
 	public void delete(Long productId);
 
-	public Product getProduct(Long id);
+	public Product findById(Long id);
 
 }
