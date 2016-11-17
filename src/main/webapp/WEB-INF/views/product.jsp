@@ -73,8 +73,8 @@
 												<button  type="button" class="btn btn-info moveToRelease" data-storyId='${userStory.getId()}' data-releaseId='${moveTo}' >Move</button>
 												</c:if>
 												
-												<button type="button" class="btn btn-info">Edit</button>
-												<button type="button" class="btn btn-info">Delete</button>
+												<button type="button"  onclick="window.location.href='<c:url value="/userstoy/edit/${userStory.getId()}"/>'"class="btn btn-info">Edit</button>
+												<button type="button" onclick="window.location.href='<c:url value="/userstory/delete/${userStory.getId()}"/>'" class="btn btn-info">Delete</button>
 											</div>
 											<div class="clearfix"></div>
 										</li>
