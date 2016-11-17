@@ -13,7 +13,7 @@
 <h:header />
 </head>
 <body>
-	<div id="wrapper">
+	
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<!-- Page Heading -->
@@ -25,19 +25,9 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-6">
-						<form:form role="form" method="POST" modelAttribute="userstory" id="userstory" action="updateUserStory">
+						<form:form role="form" method="POST" modelAttribute="userstory" id="userstory" >
 							<div class="form-group">
-							 <form:hidden path="id" />
-							 <form:hidden path="content" />
-							  <form:hidden path="createdDate" />
-							   <form:hidden path="createdDate" />
-							  <%--  <form:hidden path="users" /> --%>
-							   <form:hidden path="status" />
-							    <form:hidden path="estimationgRemainingEffortForTester" />
-							   <form:hidden path="estimationgEffortForTester" />
-							   
-							   
-								<label>Title</label>
+							 	<label>Title</label>
 								<form:input path="title" class="form-control" value="${title}" readonly="true"/>
 								<form:errors path="title" cssClass="error" />
 							</div>
@@ -75,7 +65,7 @@
 		</div>
 		<!-- /#page-wrapper -->
 
-	</div>
+
 
 
 	<h:footer />
