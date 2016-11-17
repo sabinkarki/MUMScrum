@@ -55,6 +55,29 @@ public class UserStoryController {
 		return "userstoryform";
 
 	}
+	
+	
+	@RequestMapping(value = { "/product/{productId}/userstory/{id}/update" }, method = RequestMethod.GET)
+	public String newUserstory(@PathVariable long productId, @PathVariable long id,Model model) {
+	UserStory userStory = userStoryService.getUserStory(id);
+		model.addAttribute("userStory", userStory);
+		model.addAttribute("edit", true);
+		return "userstoryform";
+
+	}
+	
+	
+	@RequestMapping(value = { "/product/{productId}/userstory/{id}/update" }, method = RequestMethod.POST)
+	public String updatestory(@PathVariable long productId, @PathVariable long id,@ModelAttribute("userstory") UserStory userStory, BindingResult result) {
+		if (result.hasErrors()) {
+			return "userstoryform";
+		} else {
+			userStoryService.update(userStory);;
+			return "redirect:/product/" + productId;
+
+		}		
+
+	}
 
 	@RequestMapping(value = { "product/{productId}/userstory/new" }, method = RequestMethod.POST)
 	public String createUserstory(@PathVariable long productId, @ModelAttribute("userstory") UserStory userStory, BindingResult result,
@@ -139,5 +162,14 @@ public class UserStoryController {
 		return "redirect:/developerUserStoryEffort";
 		
 	}
+	
+	@RequestMapping(value={"delete/product/{productId}/userstory/{id}"})
+	public String deleteUserStory(@PathVariable long productId, @PathVariable long id){
+		userStoryService.delete(id);
+		return "redirect:/product/" + productId;
+		
+	}
+	
+	
 	
 }
