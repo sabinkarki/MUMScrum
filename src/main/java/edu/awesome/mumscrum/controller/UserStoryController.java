@@ -8,10 +8,12 @@ import java.util.TreeMap;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,4 +86,58 @@ public class UserStoryController {
 		userStoryService.addToRelease(id,releaseId);
 		
 	}
+	
+	
+	
+	
+	@RequestMapping(value = { "effort/new" }, method = RequestMethod.GET)
+	public String estimateEffort(Model model,@Valid UserStory userstory) {
+		
+		model.addAttribute("title",userstory.getTitle());
+		model.addAttribute("userstory", new UserStory());
+		model.addAttribute("edit", false);
+		return "effortform";
+
+	}
+
+	@RequestMapping(value = { "effort/new" }, method = RequestMethod.POST)
+	public String createEffort(@Valid UserStory userstory, BindingResult result, ModelMap model, HttpSession session) {
+
+		session.setAttribute("userstory", userstory);
+		if (result.hasErrors()) {
+			return "effortform";
+		} else {
+			/*userstoryService.save(userstory);
+			return "redirect:/effort/" + userstory.getId();*/
+			return "effortform";
+		}
+
+	}
+	
+	
+	@RequestMapping(value = { "/developerUserStoryEffort" }, method = RequestMethod.GET)
+	public String developerUserStoryeffort(Model model,@Valid UserStory userstory) {
+		model.addAttribute("userstoryList", userStoryService.getUserStories());
+		return "effortlist";
+	}
+	
+	@RequestMapping("/userstoryEffort/{id}")
+	public String showEffort(@PathVariable long id, Model model){
+		UserStory userstory=userStoryService.getUserStory(id);
+		System.out.println(userstory.getTitle());
+		model.addAttribute("userstory", userstory);
+		return "effortform";
+		
+	}
+	
+	@RequestMapping("/updateUS")
+	public String updateUserStory(@PathVariable long id, Model model, UserStory userstory){
+		
+		
+		userStoryService.save(userstory);
+		
+		return "redirect:/developerUserStoryEffort";
+		
+	}
+	
 }

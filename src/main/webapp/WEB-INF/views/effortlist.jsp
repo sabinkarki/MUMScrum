@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ taglib tagdir="/WEB-INF/tags" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -11,10 +12,9 @@
 <h:header />
 </head>
 <body>
-
 	<div id="wrapper">
 
-		<h:sidebar/>
+		<h:sidebar />
 
 		<div id="page-wrapper">
 
@@ -22,12 +22,10 @@
 
 				<!-- Page Heading -->
 				<div class="row">
-					<div class="col-lg-12">
-						<h1 class="page-header">
-							 User Stories
-						</h1>
+					<%-- <div class="col-lg-12">
+						<h1 class="page-header">User Stories</h1>
 
-					</div>
+					</div> --%>
 				</div>
 				<!-- /.row -->
 
@@ -39,19 +37,27 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th>Name</th>
-										<th>StartDate</th>
-										<th>Actions</th>
+										<th>User Stories</th>
+										
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>Story1</td>
-										<td>date</td>
-										<td>Test</td>
+										<td><c:forEach var="userstory" items="${userstoryList}">
+												<li><a
+													href="${pageContext.request.contextPath}/userstoryEffort/${userstory.getId()}">${userstory.getTitle()}</a>
+													<%-- <small style="margin-left: 25px;">${product.getStartDate()}</small> --%>
+												</li>
+												
+
+												<%-- <li><a href="<c:url value='/product/new'/>"><i class="fa fa-fw fa-envelope"></i> Create product</a></li> --%>
+
+
+											</c:forEach></td>
+										
 									</tr>
-									
-									
+
+
 								</tbody>
 							</table>
 						</div>
@@ -61,13 +67,8 @@
 				<!-- /.row -->
 
 
-<c:forEach var="userstory" items="${userstoryList}">
-	<li><a href="${pageContext.request.contextPath}/userstory/${userstory.getId()}">${userstory.getTitle()}</a>
-	
-	</li>
-	<li class="divider"></li>
 
-</c:forEach>
+
 			</div>
 			<!-- /.container-fluid -->
 
@@ -75,7 +76,6 @@
 		<!-- /#page-wrapper -->
 
 	</div>
-
 
 
 	<h:footer />

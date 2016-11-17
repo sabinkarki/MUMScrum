@@ -68,7 +68,10 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
 
 	@Override
 	public UserStory getUserStory(Long id) {
-		return null;
+		Session session = factory.getCurrentSession();
+		UserStory userStory =(UserStory)session.get(UserStory.class,id);
+		session.close();
+		return userStory;
 	}
 
 	@SuppressWarnings("unchecked")
