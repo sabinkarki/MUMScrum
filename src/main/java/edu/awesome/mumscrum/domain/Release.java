@@ -1,5 +1,7 @@
 package edu.awesome.mumscrum.domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -29,9 +31,9 @@ public class Release {
 	@NotBlank
 	private String version;
 
-	@NotBlank
-	@Temporal(value = TemporalType.DATE)
-	private Date releaseDate;
+	//@NotBlank
+	//@Temporal(value = TemporalType.DATE)
+	private String releaseDate;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Sprint> sprintList;
@@ -72,12 +74,24 @@ public class Release {
 		this.sprintList = sprintList;
 	}
 
-	public Date getReleaseDate() {
+	public String getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
+//		String pattern = "yyyy-MM-dd";
+//		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+//
+//		Date date;
+//		try {
+//			date = simpleDateFormat.parse(releaseDate);
+//			this.releaseDate = date;
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 	}
 
 }

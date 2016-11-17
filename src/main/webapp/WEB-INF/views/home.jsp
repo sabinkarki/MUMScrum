@@ -1,14 +1,51 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="h"%>
+
 <html>
 <head>
-	<title>Home</title>
+<h:header />
+
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+	<h:nosidebar />
+
+	<div id="page-wrapper">
+
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Welcome to MUMScrum</h1>
+
+				</div>
+			</div>
+			<!-- /.row -->
+
+
+			<div class="row">
+				<div class="col-lg-12">
+
+
+					<div class="alert alert-info" role="alert">
+						No product added yet. <a href="<c:url value='/product/new' />">Add product </a>
+					</div>
+
+				</div>
+			</div>
+			<!-- /.row -->
+
+
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- /#page-wrapper -->
+
+
+
+	<h:footer />
 </body>
 </html>

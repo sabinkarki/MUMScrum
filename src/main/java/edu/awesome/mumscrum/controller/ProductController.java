@@ -26,7 +26,6 @@ public class ProductController {
 
 	@RequestMapping(value = { "product/new" }, method = RequestMethod.GET)
 	public String newProduct(Model model) {
-
 		model.addAttribute("product", new Product());
 		model.addAttribute("edit", false);
 		return "productform";
@@ -34,13 +33,12 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = { "product/new" }, method = RequestMethod.POST)
-	public String createProduct(@Valid Product product, BindingResult result, ModelMap model, HttpSession session) {
-
-		session.setAttribute("product", product);
+	public String createProduct(@Valid Product product, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "productform";
 		} else {
 			productService.save(product);
+			model.addAttribute("selectedProductId", product.getId());
 			return "redirect:/product/" + product.getId();
 
 		}

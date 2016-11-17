@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import edu.awesome.mumscrum.domain.Product;
+import edu.awesome.mumscrum.domain.Release;
 import edu.awesome.mumscrum.repository.ProductRepository;
 
 
@@ -57,5 +58,11 @@ public class ProductServiceImpl implements ProductService {
 		
 
 	}
+	
+	public void addRelease(Release release,long ProductId){
+		 productRepository.addRelease(release, ProductId);
+		
+	}
+
 
 }

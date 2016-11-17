@@ -47,10 +47,10 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav side-nav">
 
-			<li class="userstorymenu active"><a
-				href="<c:url value='/userstory/list' />"><i
+			<li id="productSidebar" class="sidebarElements active"><a
+				href="<c:url value='/product/${selectedProductId}#product' />"><i
 					class="fa fa-fw fa-dashboard"></i>Product Backlog</a></li>
-			<li><a href="<c:url value='/release/product/${selectedProductId}' />"><i
+			<li id="releaseSidebar" class="sidebarElements"><a href="<c:url value='/release/product/${selectedProductId}#release' />"><i
 					class="fa fa-fw fa-bar-chart-o"></i>Releases</a></li>
 
 		</ul>

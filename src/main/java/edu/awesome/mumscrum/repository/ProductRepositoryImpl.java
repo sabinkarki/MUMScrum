@@ -13,6 +13,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import edu.awesome.mumscrum.domain.Product;
+import edu.awesome.mumscrum.domain.Release;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
@@ -66,9 +67,20 @@ public class ProductRepositoryImpl implements ProductRepository {
 		Session session = factory.getCurrentSession();
 		Product product = (Product) session.get(Product.class, id);
 		Hibernate.initialize(product.getReleaseList());
-
 		session.close();
 		return product;
+	}
+
+	@Override
+	public void addRelease(Release release, long productId) {
+		Session session = factory.getCurrentSession();
+		Product product = (Product) session.get(Product.class, productId);
+		product.getReleaseList().add(release);
+		session.save(release);
+		session.save(product);
+		session.flush();
+		
+		
 	}
 
 }

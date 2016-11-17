@@ -6,6 +6,7 @@ package edu.awesome.mumscrum.service;
 import java.util.List;
 
 import edu.awesome.mumscrum.domain.Product;
+import edu.awesome.mumscrum.domain.Release;
 
 
 public interface ProductService {
@@ -19,5 +20,8 @@ public interface ProductService {
 	public void delete(Long productId);
 
 	public Product findById(Long id);
+	
+	public void addRelease(Release release,long ProductId);
+
 
 }

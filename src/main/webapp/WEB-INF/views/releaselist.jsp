@@ -22,9 +22,7 @@
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">
-							Releases
-						</h1>
+						<h1 class="page-header">Releases</h1>
 
 					</div>
 				</div>
@@ -35,35 +33,43 @@
 					<div class="col-lg-12">
 
 						<div class="table-responsive">
-						<c:choose>
-				<c:when test="${ empty product.getReleaseList()}">
-				<div class="alert alert-info" role="alert">No releases added yet <a href="#" >Add new release </a></div>
-					
-				</c:when>
-				<c:otherwise>
-					<table class="table table-hover">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>StartDate</th>
-										<th>Actions</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Release1</td>
-										<td>Release1 Date</td>
-										<td>
-										<c:out value="${product.getReleaseList()}" ></c:out>
-										</td>
-									</tr>
+							<c:choose>
+								<c:when test="${ empty product.getReleaseList()}">
+									<div class="alert alert-info" role="alert">
+										No releases added yet. <a
+											href="<c:url value='/product/${selectedProductId}/release/new' />">Add
+											new release </a>
+									</div>
+
+								</c:when>
+								<c:otherwise>
 									
+									<button type="button" style="margin-bottom:10px" class="btn btn-info pull-left" onclick="window.location.href='<c:url value="/product/${selectedProductId}/release/new'"/>">Add new release</button>
+									<div class="clearfix"></div>
 									
-								</tbody>
-							</table>
-				</c:otherwise>
-			</c:choose>
-							
+
+									<c:forEach var="release" items="${product.getReleaseList()}">
+
+										<div class="panel panel-default">
+											<div class="panel-heading">${release.getName()}</div>
+											<div class="panel-body">
+													<p> Version: ${release.getVersion()}</p>
+													<p> Release date: ${release.getVersion()}</p>
+
+
+												<div class="btn-group pull-right" role="group" aria-label="...">
+													<button type="button" class="btn btn-info">Add Userstory</button>
+													<button type="button" class="btn btn-info">Add Sprints</button>
+													<button type="button" class="btn btn-info">Edit</button>
+													<button type="button" class="btn btn-info">Delete</button>
+												</div>
+
+											</div>
+										</div>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+
 						</div>
 
 					</div>

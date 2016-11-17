@@ -3,8 +3,10 @@
 
 <!-- jQuery -->
     <script  src="<c:url value="/resources/js/jquery.js" />"></script>
+    
 	<!-- Bootstrap Core JavaScript -->
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+     <script  src="<c:url value="/resources/js/mumscrum.js" />"></script>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
