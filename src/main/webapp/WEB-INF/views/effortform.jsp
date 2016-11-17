@@ -25,7 +25,7 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-6">
-						<form:form role="form" method="POST" modelAttribute="userstory" id="userstory" action="updateUS">
+						<form:form role="form" method="POST" modelAttribute="userstory" id="userstory" action="updateUserStory">
 							<div class="form-group">
 							 <form:hidden path="id" />
 							 <form:hidden path="content" />
@@ -43,12 +43,12 @@
 							</div>
 							<div class="form-group">
 								<label>Estimate Effort</label>
-								<form:input path="estimationgEffortForDeveloper" class="form-control"  />
-								<form:errors path="estimationgEffortForDeveloper" cssClass="error" />
+								<form:input path="estimationgEffortForDeveloper" class="form-control"  value="${estimatedEffort }"/>
+								<form:errors path="estimationgEffortForDeveloper" cssClass="error"  />
 							</div>
 							<div class="form-group">
 								<label>Remaining Effort</label>
-								<form:input path="estimationgRemainingEffortForDeveloper" class="form-control"  />
+								<form:input path="estimationgRemainingEffortForDeveloper" class="form-control" value="${remainingEffort }"  />
 								<form:errors path="estimationgRemainingEffortForDeveloper" cssClass="error" />
 							</div>
 							<c:choose>
