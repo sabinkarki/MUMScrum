@@ -81,12 +81,45 @@ public class ReleaseController {
 			return "releaseform";
 		} else {
 			productService.addRelease(release, productId);
-			System.out.println(release);
 			return "redirect:/release/product/" + productId+"#release";
 
 		}
 
 	}
+	
+	@RequestMapping(value={"product/{productId}/release/{id}/update"}, method = RequestMethod.GET)
+	public String update(@PathVariable long productId, @PathVariable long id, Model model) {
+		Release release = releaseService.findById(id);
+		model.addAttribute("release", release);
+		model.addAttribute("selectedProductId",productId);
+		model.addAttribute("edit", false);
+		return "releaseform";
+
+	}
+	
+	
+	@RequestMapping(value={"product/{productId}/release/{id}/update"}, method = RequestMethod.POST)
+	public String updateRelease(@PathVariable long productId,@Valid Release release, BindingResult result, ModelMap model) {
+		model.addAttribute("selectedProductId",productId);
+		if (result.hasErrors()) {
+			return "releaseform";
+		} else {
+			releaseService.update(release);
+			return "redirect:/release/product/" + productId+"#release";
+
+		}
+
+	}
+	
+
+	
+	@RequestMapping(value={"product/{productId}/release/{id}/delete"})
+	public String delete(@PathVariable long productId, @PathVariable long id){
+		releaseService.delete(id);
+		return "redirect:/release/product/" + productId+"#release";
+		
+	}
+	
 
 
 }

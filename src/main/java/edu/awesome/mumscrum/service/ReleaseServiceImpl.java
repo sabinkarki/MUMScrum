@@ -42,13 +42,13 @@ public class ReleaseServiceImpl implements ReleaseService {
 
 	@Override
 	public void update(Release release) {
-		// TODO Auto-generated method stub
+		releaseRepository.update(release);
 
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		releaseRepository.delete(id);
 
 	}
 

@@ -44,8 +44,7 @@
 					<div class="panel-heading">
 						<h3 class="panel-title">Product Backlog</h3>
 						<a class="pull-right" style="margin-top: -18px;"
-							href='<c:url value="/product/${selectedProductId}/userstory/new"/>'>Add
-							User Stories</a>
+							href='<c:url value="/product/${selectedProductId}/userstory/new"/>'>Create Product Backlog</a>
 					</div>
 					<div class="panel-body">
 						<c:choose>

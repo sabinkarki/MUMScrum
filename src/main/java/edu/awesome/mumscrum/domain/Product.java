@@ -28,7 +28,7 @@ public class Product {
 	@Temporal(value = TemporalType.DATE)
 	private Date startDate;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Release> releaseList;
 
 	
