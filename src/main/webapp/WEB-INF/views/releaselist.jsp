@@ -54,7 +54,7 @@
 											<div class="panel-heading">${release.getName()}</div>
 											<div class="panel-body">
 													<p> Version: ${release.getVersion()}</p>
-													<p> Release date: ${release.getVersion()}</p>
+													<p> Release date: ${release.getReleaseDate()}</p>
 
 
 												<div class="btn-group pull-right" role="group" aria-label="...">
