@@ -12,7 +12,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import edu.awesome.mumscrum.domain.Product;
 import edu.awesome.mumscrum.domain.UserStory;
 
 /**
@@ -49,7 +48,7 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
 
 	@Override
 	public void update(UserStory userStory) {
-		Session session = factory.getCurrentSession();
+		Session session = factory.openSession();
 		session.update(userStory);
 		session.flush();
 		session.close();
@@ -68,7 +67,7 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
 
 	@Override
 	public UserStory getUserStory(Long id) {
-		Session session = factory.getCurrentSession();
+		Session session = factory.openSession();
 		UserStory userStory =(UserStory)session.get(UserStory.class,id);
 		session.close();
 		return userStory;

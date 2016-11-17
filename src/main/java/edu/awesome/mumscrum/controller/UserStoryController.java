@@ -31,66 +31,67 @@ public class UserStoryController {
 	private UserStoryService userStoryService;
 
 	@RequestMapping(value = { "product/{productId}/userstory/new" }, method = RequestMethod.GET)
-	public String newUserstory(@PathVariable long productId,Model model) {
+	public String newUserstory(@PathVariable long productId, Model model) {
 		System.out.println("US GET");
 		UserStory userStory = new UserStory();
 		userStory.setProductId(productId);
 		model.addAttribute("userStory", userStory);
 		model.addAttribute("edit", false);
 
-//		Map<Integer, String> developerMap = new TreeMap<>();
-//		Map<Integer, String> testerMap = new TreeMap<>();
+		// Map<Integer, String> developerMap = new TreeMap<>();
+		// Map<Integer, String> testerMap = new TreeMap<>();
 
-//		developerMap.put(1, "Jai");
-//		developerMap.put(2, "Guru");
-//		developerMap.put(3, "Dev");
-//		testerMap.put(4, "TJai");
-//		testerMap.put(5, "TGuru");
-//		testerMap.put(6, "TDev");
+		// developerMap.put(1, "Jai");
+		// developerMap.put(2, "Guru");
+		// developerMap.put(3, "Dev");
+		// testerMap.put(4, "TJai");
+		// testerMap.put(5, "TGuru");
+		// testerMap.put(6, "TDev");
 
-//		model.addAttribute("developerMap", developerMap);
-//		model.addAttribute("testerMap", testerMap);
-		//model.addAttribute("today", new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
+		// model.addAttribute("developerMap", developerMap);
+		// model.addAttribute("testerMap", testerMap);
+		// model.addAttribute("today", new
+		// SimpleDateFormat("MM/dd/yyyy").format(new Date()));
 
 		return "userstoryform";
 
 	}
-	
-	
+
 	@RequestMapping(value = { "/product/{productId}/userstory/{id}/update" }, method = RequestMethod.GET)
-	public String newUserstory(@PathVariable long productId, @PathVariable long id,Model model) {
-	UserStory userStory = userStoryService.getUserStory(id);
+	public String newUserstory(@PathVariable long productId, @PathVariable long id, Model model) {
+		UserStory userStory = userStoryService.getUserStory(id);
 		model.addAttribute("userStory", userStory);
 		model.addAttribute("edit", true);
 		return "userstoryform";
 
 	}
-	
-	
+
 	@RequestMapping(value = { "/product/{productId}/userstory/{id}/update" }, method = RequestMethod.POST)
-	public String updatestory(@PathVariable long productId, @PathVariable long id,@ModelAttribute("userstory") UserStory userStory, BindingResult result) {
+	public String updatestory(@PathVariable long productId, @PathVariable long id,
+			@ModelAttribute("userstory") UserStory userStory, BindingResult result) {
 		if (result.hasErrors()) {
 			return "userstoryform";
 		} else {
-			userStoryService.update(userStory);;
+			userStoryService.update(userStory);
+			;
 			return "redirect:/product/" + productId;
 
-		}		
+		}
 
 	}
 
 	@RequestMapping(value = { "product/{productId}/userstory/new" }, method = RequestMethod.POST)
-	public String createUserstory(@PathVariable long productId, @ModelAttribute("userstory") UserStory userStory, BindingResult result,
-			HttpServletRequest request) {
+	public String createUserstory(@PathVariable long productId, @ModelAttribute("userstory") UserStory userStory,
+			BindingResult result, HttpServletRequest request) {
 
 		// System.out.println(request.getParameter("users"));
-//		System.out.println(request.getParameter("users0"));
-//		System.out.println(request.getParameter("users1"));
-//		System.out.println("US POST");
-//		System.out.println(userstory.getId());
-//		System.out.println(userstory.getTitle());
-//		System.out.println(userstory.getContent());
-//		System.out.println(userstory.getProductId());
+		// System.out.println(request.getParameter("users0"));
+		// System.out.println(request.getParameter("users1"));
+		// System.out.println("US POST");
+		// System.out.println(userstory.getId());
+		// System.out.println(userstory.getTitle());
+		// System.out.println(userstory.getContent());
+		// System.out.println(userstory.getProductId());
 		// List<User>users=new ArrayList<>();
 		// users.add(e)
 		// userstory.setUsers(users);
@@ -102,21 +103,18 @@ public class UserStoryController {
 
 		}
 	}
-	
+
 	@RequestMapping(value = { "/movetorelease/userstory/{id}/release/{releaseId}" }, method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void createUserstory(@PathVariable long id,@PathVariable long releaseId) {
-		userStoryService.addToRelease(id,releaseId);
-		
+	public void createUserstory(@PathVariable long id, @PathVariable long releaseId) {
+		userStoryService.addToRelease(id, releaseId);
+
 	}
-	
-	
-	
-	
+
 	@RequestMapping(value = { "effort/new" }, method = RequestMethod.GET)
-	public String estimateEffort(Model model,@Valid UserStory userstory) {
-		
-		model.addAttribute("title",userstory.getTitle());
+	public String estimateEffort(Model model, @Valid UserStory userstory) {
+
+		model.addAttribute("title", userstory.getTitle());
 		model.addAttribute("userstory", new UserStory());
 		model.addAttribute("edit", false);
 		return "effortform";
@@ -130,46 +128,48 @@ public class UserStoryController {
 		if (result.hasErrors()) {
 			return "effortform";
 		} else {
-			/*userstoryService.save(userstory);
-			return "redirect:/effort/" + userstory.getId();*/
+			/*
+			 * userstoryService.save(userstory); return "redirect:/effort/" +
+			 * userstory.getId();
+			 */
 			return "effortform";
 		}
 
 	}
-	
-	
+
 	@RequestMapping(value = { "/developerUserStoryEffort" }, method = RequestMethod.GET)
-	public String developerUserStoryeffort(Model model,@Valid UserStory userstory) {
+	public String developerUserStoryeffort(Model model, @Valid UserStory userstory) {
 		model.addAttribute("userstoryList", userStoryService.getUserStories());
 		return "effortlist";
 	}
-	
-	@RequestMapping("/userstoryEffort/{id}")
-	public String showEffort(@PathVariable long id, Model model){
-		UserStory userstory=userStoryService.getUserStory(id);
-		System.out.println(userstory.getTitle());
+
+	@RequestMapping(value = { "/userstoryEffort/{id}/update" }, method = RequestMethod.GET)
+	public String showEffort(@PathVariable long id, Model model) {
+		UserStory userstory = userStoryService.getUserStory(id);
 		model.addAttribute("userstory", userstory);
 		return "effortform";
-		
+
 	}
-	
-	@RequestMapping("/updateUS")
-	public String updateUserStory(@PathVariable long id, Model model, UserStory userstory){
-		
-		
-		userStoryService.save(userstory);
-		
-		return "redirect:/developerUserStoryEffort";
-		
+
+	@RequestMapping(value = { "/userstoryEffort/{id}/update" }, method = RequestMethod.POST)
+	public String updateEffort(@PathVariable long id, UserStory userStory, BindingResult result,Model model) {
+		UserStory userstory = userStoryService.getUserStory(id);
+		if (result.hasErrors()) {
+			return "effortform";
+		} else {
+			userStoryService.update(userStory);
+			return developerUserStoryeffort(model, userstory) ;
+		}
+
 	}
+
 	
-	@RequestMapping(value={"delete/product/{productId}/userstory/{id}"})
-	public String deleteUserStory(@PathVariable long productId, @PathVariable long id){
+
+	@RequestMapping(value = { "delete/product/{productId}/userstory/{id}" })
+	public String deleteUserStory(@PathVariable long productId, @PathVariable long id) {
 		userStoryService.delete(id);
 		return "redirect:/product/" + productId;
-		
+
 	}
-	
-	
-	
+
 }

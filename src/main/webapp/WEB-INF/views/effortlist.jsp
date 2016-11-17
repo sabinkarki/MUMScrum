@@ -45,7 +45,7 @@
 									<tr>
 										<td><c:forEach var="userstory" items="${userstoryList}">
 												<li><a
-													href="${pageContext.request.contextPath}/userstoryEffort/${userstory.getId()}">${userstory.getTitle()}</a>
+													href="${pageContext.request.contextPath}/userstoryEffort/${userstory.getId()}/update">${userstory.getTitle()}</a>
 													<%-- <small style="margin-left: 25px;">${product.getStartDate()}</small> --%>
 												</li>
 												
