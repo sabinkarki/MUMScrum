@@ -58,9 +58,9 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
 	@Override
 	public void delete(Long userStoryId) {
 		Session session = factory.getCurrentSession();
-		Product product = (Product) session.get(Product.class, userStoryId);
-		if (product != null) {
-			session.delete(product);
+		UserStory userStory = (UserStory) session.get(UserStory.class, userStoryId);
+		if (userStory != null) {
+			session.delete(userStory);
 			session.flush();
 		}
 		session.close();
