@@ -104,4 +104,14 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
         return query.list();
 	}
 
+	@Override
+	public void removeFromRelease(long id) {
+		Session session = factory.openSession();
+		UserStory userStory = (UserStory) session.get(UserStory.class, id);
+		userStory.setReleaseId(0);
+		session.save(userStory);
+		session.flush();
+		
+	}
+
 }

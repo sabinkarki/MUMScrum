@@ -74,4 +74,10 @@ public class UserStoryServiceImpl implements UserStoryService {
 		return userStoryRepository.getReleaseBacklogByReleaseId(releaseId);
 	}
 
+	@Override
+	public void removeFromRelease(long id) {
+		userStoryRepository.removeFromRelease(id);
+		
+	}
+
 }

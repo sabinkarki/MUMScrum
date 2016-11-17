@@ -56,7 +56,7 @@
 
 											<div class="btn-group pull-right" role="group"
 												aria-label="...">
-													<button type="button" class="btn btn-info">Delete</button>
+													<button type="button"  onclick="window.location.href='<c:url value="/product/${selectedProductId}/release/${release.getId()}/userstory/${userStory.getId()}/remove"/>'" class="btn btn-info">Remove</button>
 											</div>
 											<div class="clearfix"></div>
 										</li>

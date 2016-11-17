@@ -171,5 +171,12 @@ public class UserStoryController {
 		return "redirect:/product/" + productId;
 
 	}
+	
+	@RequestMapping(value = { "/product/{productId}/release/{releaseId}/userstory/{id}/remove" })
+	public String removeFromRelease(@PathVariable long productId,@PathVariable long releaseId, @PathVariable long id) {
+		userStoryService.removeFromRelease(id);
+		return "redirect:/releasebacklog/product/" + productId+"/release/" + releaseId;
+
+	}
 
 }
