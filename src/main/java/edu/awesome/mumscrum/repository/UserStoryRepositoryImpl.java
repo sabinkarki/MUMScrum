@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -68,6 +69,37 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
 	@Override
 	public UserStory getUserStory(Long id) {
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UserStory> getProductBacklogByProductId(long productId) {
+		Session session = factory.openSession();
+		Query query = session.createQuery(" from UserStory where productId= :productId");
+        query.setParameter("productId", productId);
+        return query.list();
+		
+	}
+	
+	
+
+	@Override
+	public void addToRelease(long id, long releaseId) {
+		Session session = factory.openSession();
+		UserStory userStory = (UserStory) session.get(UserStory.class, id);
+		userStory.setReleaseId(releaseId);
+		session.save(userStory);
+		session.flush();
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UserStory> getReleaseBacklogByReleaseId(long releaseId) {
+		Session session = factory.openSession();
+		Query query = session.createQuery(" from UserStory where releaseId= :releaseId");
+        query.setParameter("releaseId", releaseId);
+        return query.list();
 	}
 
 }

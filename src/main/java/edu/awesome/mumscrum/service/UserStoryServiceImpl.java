@@ -3,6 +3,7 @@
  */
 package edu.awesome.mumscrum.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,6 +31,7 @@ public class UserStoryServiceImpl implements UserStoryService {
 
 	@Override
 	public void save(UserStory userStory) {
+		userStory.setCreatedDate(new Date());
 		userStoryRepository.save(userStory);
 
 	}
@@ -52,6 +54,24 @@ public class UserStoryServiceImpl implements UserStoryService {
 	@Override
 	public void delete(Long userStoryId) {
 		userStoryRepository.delete(userStoryId);
+	}
+
+	@Override
+	public List<UserStory> getProductBacklogByProductId(long productId) {
+		return userStoryRepository.getProductBacklogByProductId(productId);
+		
+	}
+
+	@Override
+	public void addToRelease(long id, long releaseId) {
+		userStoryRepository.addToRelease(id,releaseId);
+		
+	}
+
+	@Override
+	public List<UserStory> getReleaseBacklogByReleaseId(long releaseId) {
+		// TODO Auto-generated method stub
+		return userStoryRepository.getReleaseBacklogByReleaseId(releaseId);
 	}
 
 }

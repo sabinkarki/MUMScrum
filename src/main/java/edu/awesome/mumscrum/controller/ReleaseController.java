@@ -2,6 +2,7 @@ package edu.awesome.mumscrum.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -20,14 +21,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.awesome.mumscrum.domain.Product;
 import edu.awesome.mumscrum.domain.Release;
+import edu.awesome.mumscrum.domain.UserStory;
 import edu.awesome.mumscrum.service.ProductService;
 import edu.awesome.mumscrum.service.ReleaseService;
+import edu.awesome.mumscrum.service.UserStoryService;
 
 @Controller
 public class ReleaseController {
 
 	@Inject
 	ProductService productService;
+	
+	@Inject
+	UserStoryService userStoryService;
+	
+	@Inject
+	ReleaseService releaseService;
 	
 	
 	
@@ -36,7 +45,21 @@ public class ReleaseController {
 		Product product = productService.findById(productId);
 		model.addAttribute("product",product);
 		model.addAttribute("selectedProductId",productId);
+		model.addAttribute("selectedProductName",product.getName());
 		return "releaselist";
+
+	}
+	
+	@RequestMapping(value = { "/releasebacklog/product/{productId}/release/{id}" }, method = RequestMethod.GET)
+	public String release(@PathVariable long productId,@PathVariable long id,Model model) {
+		Product product = productService.findById(productId);
+		Release release = releaseService.findById(id);
+		List<UserStory> releaseBacklog = userStoryService.getReleaseBacklogByReleaseId(id); 
+		model.addAttribute("release",release);
+		model.addAttribute("releaseBacklog",releaseBacklog);
+		model.addAttribute("selectedProductId",productId);
+		model.addAttribute("selectedProductName",product.getName());
+		return "release";
 
 	}
 
@@ -64,20 +87,6 @@ public class ReleaseController {
 		}
 
 	}
-//	
-//	@RequestMapping("/product/{id}")
-//	public String showProduct(@PathVariable long id, Model model,HttpSession session){
-//		model.addAttribute(productService.findById(id));
-//		model.addAttribute("setSelected",true);
-//		return "product";
-//		
-//	}
-//	
-//	@RequestMapping(value="/product/list", method =RequestMethod.GET)
-//	public  String list(Model model){
-//		model.addAttribute("productList",productService.getProducts());
-//		return "productlist";
-//		
-//	}
+
 
 }

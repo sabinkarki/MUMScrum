@@ -22,4 +22,10 @@ public interface UserStoryRepository {
 
 	public UserStory getUserStory(Long id);
 
+	public List<UserStory> getProductBacklogByProductId(long productId);
+
+	public void addToRelease(long id, long releaseId);
+
+	public List<UserStory> getReleaseBacklogByReleaseId(long releaseId);
+
 }

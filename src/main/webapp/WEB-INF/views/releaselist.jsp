@@ -58,7 +58,8 @@
 
 
 												<div class="btn-group pull-right" role="group" aria-label="...">
-													<button type="button" class="btn btn-info">Add Userstory</button>
+													<button type="button" onclick="window.location.href='<c:url value="/product/${selectedProductId}/move/release/${release.getId()}"/>'" class="btn btn-info">Add Userstory</button>
+													<button type="button" onclick="window.location.href='<c:url value="/releasebacklog/product/${selectedProductId}/release/${release.getId()}"/>'" class="btn btn-info">View Release Backlog</button>
 													<button type="button" class="btn btn-info">Add Sprints</button>
 													<button type="button" class="btn btn-info">Edit</button>
 													<button type="button" class="btn btn-info">Delete</button>

@@ -25,6 +25,10 @@ public class UserStory {
 	private String title;
 
 	private String content;
+	
+	private long productId;
+	
+	private long releaseId;
 
 	@Temporal(value = TemporalType.DATE)
 	private Date createdDate;
@@ -128,5 +132,28 @@ public class UserStory {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
+	
+	public long getProductId() {
+		return productId;
+	}
+
+
+	public void setProductId(long productId) {
+		this.productId = productId;
+	}
+
+
+	public long getReleaseId() {
+		return releaseId;
+	}
+
+
+	public void setReleaseId(long releaseId) {
+		this.releaseId = releaseId;
+	}
+	
+	
+
 
 }

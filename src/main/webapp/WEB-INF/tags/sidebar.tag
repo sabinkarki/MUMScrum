@@ -19,7 +19,7 @@
 		<c:choose>
 				<c:when test="${not empty selectedProductId}">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b
-						class="caret"></b> <c:out value="${product.name}"></c:out> </a>
+						class="caret"></b> <c:out value="${product.getName()}"></c:out> </a>
 				</c:when>
 				<c:otherwise>
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b

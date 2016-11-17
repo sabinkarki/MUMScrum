@@ -64,7 +64,7 @@ public class ReleaseRepositoryImpl implements ReleaseRepository {
 
 	@Override
 	public Release findById(Long id) {
-		Session session = factory.getCurrentSession();
+		Session session = factory.openSession();
 		Release release = (Release) session.get(Release.class, id);
 		session.close();
 		return release;

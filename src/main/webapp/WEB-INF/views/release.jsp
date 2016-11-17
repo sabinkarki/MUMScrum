@@ -22,7 +22,7 @@
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Product</h1>
+						<h1 class="page-header">Release</h1>
 
 					</div>
 				</div>
@@ -33,8 +33,9 @@
 					<div class="col-lg-12">
 
 						<div class="well">
-							<p>Name: ${product.getName()}</p>
-							<p>Date: ${product.getStartDate()}</p>
+							<p>Name: ${release.getName()}</p>
+							<p>Version: ${release.getVersion()}</p>
+							<p>Date: ${release.getReleaseDate()}</p>
 
 						</div>
 					</div>
@@ -42,21 +43,18 @@
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Product Backlog</h3>
-						<a class="pull-right" style="margin-top: -18px;"
-							href='<c:url value="/product/${selectedProductId}/userstory/new"/>'>Add
-							User Stories</a>
+						<h3 class="panel-title">Release Backlog</h3>
 					</div>
 					<div class="panel-body">
 						<c:choose>
-							<c:when test="${ empty productBacklog}">
+							<c:when test="${ empty releaseBacklog}">
 								<div class="alert alert-info" role="alert">No userstories
-									added to product backlog yet.</div>
+									added to this release backlog yet.</div>
 
 							</c:when>
 							<c:otherwise>
 								<ul class="list-group">
-									<c:forEach var="userStory" items="${productBacklog}">
+									<c:forEach var="userStory" items="${releaseBacklog}">
 
 										<li class="list-group-item">
 											<div class="well">
@@ -69,12 +67,7 @@
 
 											<div class="btn-group pull-right" role="group"
 												aria-label="...">
-												<c:if test="${not empty moveTo}">
-												<button  type="button" class="btn btn-info moveToRelease" data-storyId='${userStory.getId()}' data-releaseId='${moveTo}' >Move</button>
-												</c:if>
-												
-												<button type="button" class="btn btn-info">Edit</button>
-												<button type="button" class="btn btn-info">Delete</button>
+													<button type="button" class="btn btn-info">Delete</button>
 											</div>
 											<div class="clearfix"></div>
 										</li>

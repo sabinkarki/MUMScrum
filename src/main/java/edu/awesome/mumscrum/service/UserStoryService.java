@@ -23,4 +23,10 @@ public interface UserStoryService {
 
 	public UserStory getUserStory(Long id);
 
+	public List<UserStory> getProductBacklogByProductId(long  productId);
+
+	public void addToRelease(long id, long releaseId);
+
+	public List<UserStory> getReleaseBacklogByReleaseId(long id);
+
 }

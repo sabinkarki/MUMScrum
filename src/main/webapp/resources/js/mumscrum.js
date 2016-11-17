@@ -4,7 +4,16 @@ $(document).ready(function(){
 	$(locationHash+"Sidebar").addClass('active');
 	if(locationHash=="")
 		$("#productSidebar").addClass('active');
+	
+	
+	$(".moveToRelease").bind('click',function(){
+		var this1 = $(this);
+		 $.get("/mumscrum/movetorelease/userstory/"+$(this).data('storyid')+"/release/"+$(this).data('releaseid'), function(data, status){
+		        this1.text("Moved");
+		    });
 		
 
-	
-})
+	})
+		
+
+});
