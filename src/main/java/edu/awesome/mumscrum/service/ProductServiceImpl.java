@@ -64,5 +64,12 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+	@Override
+	public void removeRelease(Release release, long ProductId) {
+		 productRepository.removeRelease(release, ProductId);
+
+		
+	}
+
 
 }

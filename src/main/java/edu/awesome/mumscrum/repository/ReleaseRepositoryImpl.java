@@ -14,11 +14,15 @@ import org.springframework.stereotype.Repository;
 
 import edu.awesome.mumscrum.domain.Product;
 import edu.awesome.mumscrum.domain.Release;
+import edu.awesome.mumscrum.service.ProductService;
 
 @Repository
 public class ReleaseRepositoryImpl implements ReleaseRepository {
 	@Inject
 	SessionFactory factory;
+	
+	@Inject
+	ProductService productService;
 
 	/**
 	 * 
@@ -52,11 +56,13 @@ public class ReleaseRepositoryImpl implements ReleaseRepository {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(Long id,long productId) {
 		Session session = factory.getCurrentSession();
+		
 		Release release = (Release) session.get(Release.class, id);
 		if (release != null) {
-			session.delete(release);
+			productService.removeRelease(release, productId);
+			//session.delete(release);
 			session.flush();
 		}
 		session.close();

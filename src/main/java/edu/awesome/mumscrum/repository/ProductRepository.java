@@ -21,4 +21,6 @@ public interface ProductRepository {
 	
 	public void addRelease(Release release,long ProductId);
 
+	public void removeRelease(Release release, long productId);
+
 }

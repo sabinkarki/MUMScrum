@@ -22,25 +22,14 @@
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Release</h1>
+						<h1 class="page-header">${release.getName()}-${release.getVersion()} <small>(${release.getReleaseDate()})</small></h1>
+						
 
 					</div>
 				</div>
 				<!-- /.row -->
 
 
-				<div class="row">
-					<div class="col-lg-12">
-
-						<div class="well">
-							<p>Name: ${release.getName()}</p>
-							<p>Version: ${release.getVersion()}</p>
-							<p>Date: ${release.getReleaseDate()}</p>
-
-						</div>
-					</div>
-
-				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Release Backlog</h3>

@@ -115,7 +115,7 @@ public class ReleaseController {
 	
 	@RequestMapping(value={"product/{productId}/release/{id}/delete"})
 	public String delete(@PathVariable long productId, @PathVariable long id){
-		releaseService.delete(id);
+		releaseService.delete(id,productId);
 		return "redirect:/release/product/" + productId+"#release";
 		
 	}

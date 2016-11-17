@@ -22,6 +22,9 @@ public interface ProductService {
 	public Product findById(Long id);
 	
 	public void addRelease(Release release,long ProductId);
+	
+	public void removeRelease(Release release,long ProductId);
+
 
 
 }

@@ -22,29 +22,18 @@
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Product</h1>
+						<h1 class="page-header">${product.getName()} <small>(${product.getStartDate()})</small></h1>
+						
 
 					</div>
 				</div>
 				<!-- /.row -->
 
-
-				<div class="row">
-					<div class="col-lg-12">
-
-						<div class="well">
-							<p>Name: ${product.getName()}</p>
-							<p>Date: ${product.getStartDate()}</p>
-
-						</div>
-					</div>
-
-				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Product Backlog</h3>
 						<a class="pull-right" style="margin-top: -18px;"
-							href='<c:url value="/product/${selectedProductId}/userstory/new"/>'>Create Product Backlog</a>
+							href='<c:url value="/product/${selectedProductId}/userstory/new"/>'>Add stories to Product Backlog</a>
 					</div>
 					<div class="panel-body">
 						<c:choose>

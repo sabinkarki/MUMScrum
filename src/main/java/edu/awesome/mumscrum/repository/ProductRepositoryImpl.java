@@ -82,5 +82,16 @@ public class ProductRepositoryImpl implements ProductRepository {
 		
 		
 	}
+	
+	@Override
+	public void removeRelease(Release release, long productId) {
+		Session session = factory.getCurrentSession();
+		Product product = (Product) session.get(Product.class, productId);
+		product.getReleaseList().remove(release);
+		session.save(product);
+		session.flush();
+		
+		
+	}
 
 }

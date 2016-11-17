@@ -17,7 +17,7 @@ public interface ReleaseService {
 
 	public void update(Release release);
 
-	public void delete(Long id);
+	public void delete(Long id, long productId);
 
 	public Release findById(Long id);
 
