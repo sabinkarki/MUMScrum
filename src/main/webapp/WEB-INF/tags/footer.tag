@@ -13,9 +13,20 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://uxsolutions.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+
 <script>
 	$(function() {
+		var date = new Date();
+		date.setDate(date.getDate()-1);
 		$(".datepicker").datepicker();
+		$('.mumscrumDateField').datepicker({
+		    autoclose: true,
+		    format:"yyyy-mm-dd",
+		    startDate: date,
+		    todayHighlight: true,
+		});
 
 		$("#productListDropdown").load("/mumscrum/product/list",
 				function(data, status) {

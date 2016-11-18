@@ -49,7 +49,7 @@
 
 							<div class="form-group">
 								<label>Release date</label>
-								<form:input path="releaseDate" class="form-control"
+								<form:input path="releaseDate" class="form-control mumscrumDateField"
 									placeholder="Enter date" />
 								<form:errors path="releaseDate" cssClass="error" />
 							</div>

@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import edu.awesome.mumscrum.enums.Status;
 
 @Entity
@@ -22,8 +25,10 @@ public class UserStory {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@NotBlank
 	private String title;
 
+	@NotBlank
 	private String content;
 	
 	private long productId;

@@ -81,20 +81,7 @@ public class UserStoryController {
 	}
 
 	@RequestMapping(value = { "product/{productId}/userstory/new" }, method = RequestMethod.POST)
-	public String createUserstory(@PathVariable long productId, @ModelAttribute("userstory") UserStory userStory,
-			BindingResult result, HttpServletRequest request) {
-
-		// System.out.println(request.getParameter("users"));
-		// System.out.println(request.getParameter("users0"));
-		// System.out.println(request.getParameter("users1"));
-		// System.out.println("US POST");
-		// System.out.println(userstory.getId());
-		// System.out.println(userstory.getTitle());
-		// System.out.println(userstory.getContent());
-		// System.out.println(userstory.getProductId());
-		// List<User>users=new ArrayList<>();
-		// users.add(e)
-		// userstory.setUsers(users);
+	public String createUserstory(@PathVariable long productId,@Valid UserStory userStory,BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "userstoryform";
 		} else {
