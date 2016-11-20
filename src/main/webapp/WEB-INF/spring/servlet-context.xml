@@ -33,4 +33,27 @@
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
+	<!--For sending Email -->
+	<!-- Reading Properties File -->
+	<bean id="appProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:email.properties</value>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+	</bean>
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${smtp.host}" />
+		<property name="port" value="${smtp.port}" />
+		<property name="username" value="${smtp.user}" />
+		<property name="password" value="${smtp.pass}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
 </beans>

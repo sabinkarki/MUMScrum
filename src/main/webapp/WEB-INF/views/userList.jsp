@@ -30,9 +30,9 @@
 			<th>Action</th>
 		</tr>
 		<tbody id="list">
-			<c:forEach items="${users}" var="user">
+			<c:forEach items="${users}" var="user" varStatus="count" >
 				<tr>
-					<td>${user.id}</td>
+				     <td>${count.count}</td>
 					<td>${user.username}</td>
 					<td>${user.email}</td>
 					<td>${user.ssn}</td>
