@@ -3,6 +3,7 @@
  */
 package edu.awesome.mumscrum.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import javax.persistence.TemporalType;
 public class Sprint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<UserStory> userStories;
 
@@ -38,13 +39,30 @@ public class Sprint {
 	 */
 	public Sprint() {
 		// TODO Auto-generated constructor stub
+
+		this.setId(1L);
+		Date date1 = new Date(2016, 11, 20);
+		this.setEndDate(date1);
+		Date date = new Date(2016, 11, 19);
+		this.setStartDate(date);
+		Worklog worklog = new Worklog();
+		UserStory userStory1 = new UserStory();
+		userStory1.setId(1);
+		userStory1.setWorklog(worklog);
+		UserStory userStory2 = new UserStory();
+		userStory2.setId(2);
+		userStory2.setWorklog(worklog);
+		List<UserStory> stories = new ArrayList<>();
+		stories.add(userStory1);
+		stories.add(userStory2);
+		this.setUserStories(stories);
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
