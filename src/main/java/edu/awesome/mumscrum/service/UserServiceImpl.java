@@ -34,8 +34,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void delete(Long user) {
+	public void delete(Long userId) {
 		// TODO Auto-generated method stub
+		userRepository.delete(userId);
 
 	}
 
@@ -54,8 +55,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean checkUsername(String username) {
 		// TODO Auto-generated method stub
-		return (userRepository.checkUsername(username)!=null);
-	
+		return (userRepository.checkUsername(username) != null);
+
 	}
 
 }

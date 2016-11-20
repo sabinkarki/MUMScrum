@@ -11,8 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.awesome.mumscrum.domain.User;
 import edu.awesome.mumscrum.enums.Role;
@@ -24,6 +26,7 @@ import edu.awesome.mumscrum.validation.UserValidator;
  *
  */
 @Controller
+@SessionAttributes("msg")
 public class UserController {
 	@Inject
 	private UserService userService;
@@ -67,6 +70,14 @@ public class UserController {
 	@RequestMapping(value = "/registerRedirect", method = RequestMethod.GET)
 	public String userList(Model model) {
 		System.out.println(model.toString());
+		return "userList";
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String deleteUser(@PathVariable("id") Long id, Model model) {
+		userService.delete(id);
+		List<User> users = userService.findAllUser();
+		model.addAttribute("users", users);
 		return "userList";
 	}
 

@@ -38,8 +38,8 @@
 					<td>${user.ssn}</td>
 					<td>${user.status}</td>
 					<td>${user.role}</td>
-					<td><a href="/mumhrsystem/edit/${user.id}">Edit</a>|<a
-						href="/mumhrsystem/delete/${user.id}">Delete</a></td>
+					<td><a href="/mumscrum/edit/${user.id}">Edit</a>|<a
+						href="/mumscrum/delete/${user.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

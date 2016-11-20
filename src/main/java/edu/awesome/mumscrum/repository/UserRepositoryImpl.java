@@ -38,9 +38,13 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public void delete(Long user) {
-		// TODO Auto-generated method stub
-
+	public void delete(Long userId) {
+		Session session = factory.getCurrentSession();
+		User user = (User) session.get(User.class, userId);
+		if (user != null) {
+			session.delete(user);
+			session.flush();
+		}
 	}
 
 	@Override
@@ -53,18 +57,10 @@ public class UserRepositoryImpl implements UserRepository {
 	public void save(User user) {
 		Session session = factory.getCurrentSession();
 		session.save(user);
-		// session.flush();
-		// session.close();
-
 	}
 
 	@Override
 	public User checkUsername(String username) {
-		/*
-		 * User user = (User) factory.getCurrentSession().get(User.class,
-		 * username); return user;
-		 */
-
 		Query query = factory.getCurrentSession().createQuery("from user where username = :username");
 		query.setParameter("username", username);
 		return (User) query.uniqueResult();
