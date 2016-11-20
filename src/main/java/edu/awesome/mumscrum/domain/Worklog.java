@@ -4,36 +4,35 @@
 package edu.awesome.mumscrum.domain;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.apache.commons.collections.map.HashedMap;
+import javax.persistence.MapKeyColumn;
 
 /**
  * @author prabinadhikari
  *
  */
-// @Entity
+@Entity
 public class Worklog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	String storyID;
-	String productID;
-	Map<Date, Double> storyWorklogMap;
-	Map<String, Map<Date, Double>> sprintWorkligMap;
-	Map<String, Map<String, Map<Date, Double>>> releaseWorklogMap;
+	@ElementCollection
+	@CollectionTable
+	@MapKeyColumn
+	Map<Date, Double> dateAndEffortmap;
 
-	/**
-	 * 
-	 */
 	public Worklog() {
-		storyWorklogMap = new HashedMap();
-		sprintWorkligMap = new HashedMap();
-		releaseWorklogMap = new HashedMap();
+		id = 1;
+		dateAndEffortmap = new HashMap<>();
+		dateAndEffortmap.put(new Date(), 25.0);
 	}
 
 	public int getId() {
@@ -44,12 +43,12 @@ public class Worklog {
 		this.id = id;
 	}
 
-	public String getProductID() {
-		return productID;
+	public Map<Date, Double> getDateAndEffortmap() {
+		return dateAndEffortmap;
 	}
 
-	public void setProductID(String productID) {
-		this.productID = productID;
+	public void setDateAndEffortmap(Map<Date, Double> dateAndEffortmap) {
+		this.dateAndEffortmap = dateAndEffortmap;
 	}
 
 }
