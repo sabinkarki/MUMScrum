@@ -1,12 +1,7 @@
 package edu.awesome.mumscrum.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-import java.util.TreeMap;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -19,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import edu.awesome.mumscrum.domain.UserStory;
@@ -127,6 +121,7 @@ public class UserStoryController {
 	@RequestMapping(value = { "/developerUserStoryEffort" }, method = RequestMethod.GET)
 	public String developerUserStoryeffort(Model model, @Valid UserStory userstory) {
 		model.addAttribute("userstoryList", userStoryService.getUserStories());
+//sesssion user id to model attribute//		model.addAttribute("userId",)
 		return "effortlist";
 	}
 
