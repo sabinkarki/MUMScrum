@@ -8,19 +8,21 @@ import java.util.List;
 import edu.awesome.mumscrum.domain.User;
 
 /**
- * @author krishmanpradhan
+ * @author sabin
  *
  */
 public interface UserService {
 
-	public void save(User user);
-
-	public List<User> getUsers();
+	List<User> findAllUser();
 
 	public void update(User user);
 
-	public void delete(Long userId);
+	public void delete(Long user);
 
 	public User getUser(Long id);
+
+	public void save(User user);
+	
+	public boolean checkUsername(String username);
 
 }

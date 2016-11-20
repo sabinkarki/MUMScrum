@@ -13,19 +13,36 @@ import edu.awesome.mumscrum.domain.User;
 import edu.awesome.mumscrum.repository.UserRepository;
 
 /**
- * @author krishmanpradhan
+ * @author sabin
  *
  */
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Inject
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
-	/**
-	 * 
-	 */
-	public UserServiceImpl() {
+	@Override
+	public List<User> findAllUser() {
+		return userRepository.findAllUser();
+	}
+
+	@Override
+	public void update(User user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete(Long user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public User getUser(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -35,23 +52,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUsers() {
-		return userRepository.getUsers();
-	}
-
-	@Override
-	public void update(User user) {
-		userRepository.update(user);
-	}
-
-	@Override
-	public User getUser(Long id) {
-		return userRepository.getUser(id);
-	}
-
-	@Override
-	public void delete(Long userId) {
-		userRepository.delete(userId);
+	public boolean checkUsername(String username) {
+		// TODO Auto-generated method stub
+		return (userRepository.checkUsername(username)!=null);
+	
 	}
 
 }

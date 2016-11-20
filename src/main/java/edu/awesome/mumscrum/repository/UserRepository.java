@@ -9,18 +9,19 @@ import edu.awesome.mumscrum.domain.User;
 import edu.awesome.mumscrum.domain.UserStory;
 
 /**
- * @author krishmanpradhan
+ * @author sabin
  *
  */
 public interface UserRepository {
-	public void save(User user);
-
-	public List<User> getUsers();
+	List<User> findAllUser();
 
 	public void update(User user);
 
-	public void delete(Long userId);
+	public void delete(Long user);
 
 	public User getUser(Long id);
+
+	public void save(User user);
+	public User checkUsername(String username);
 
 }
