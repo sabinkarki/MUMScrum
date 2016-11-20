@@ -117,9 +117,10 @@ public class UserStoryController {
 		}
 
 	}
-
+	
 	@RequestMapping(value = { "/developerUserStoryEffort" }, method = RequestMethod.GET)
-	public String developerUserStoryeffort(Model model, @Valid UserStory userstory) {
+	public String developerUserStoryeffort(Model model, UserStory userstory) {
+		System.out.println(userStoryService.getUserStories().get(1).getTitle());
 		model.addAttribute("userstoryList", userStoryService.getUserStories());
 //sesssion user id to model attribute//		model.addAttribute("userId",)
 		return "effortlist";
