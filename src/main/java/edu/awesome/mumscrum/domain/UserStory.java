@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,10 +26,13 @@ public class UserStory {
 	private String title;
 
 	private String content;
-	
+
 	private long productId;
-	
+
 	private long releaseId;
+
+	@OneToOne
+	private Worklog worklog;
 
 	@Temporal(value = TemporalType.DATE)
 	private Date createdDate;
@@ -51,7 +55,6 @@ public class UserStory {
 	public UserStory() {
 		// super();
 	}
-
 
 	public long getId() {
 		return id;
@@ -132,28 +135,29 @@ public class UserStory {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
-	
+
 	public long getProductId() {
 		return productId;
 	}
-
 
 	public void setProductId(long productId) {
 		this.productId = productId;
 	}
 
-
 	public long getReleaseId() {
 		return releaseId;
 	}
 
-
 	public void setReleaseId(long releaseId) {
 		this.releaseId = releaseId;
 	}
-	
-	
 
+	public Worklog getWorklog() {
+		return worklog;
+	}
+
+	public void setWorklog(Worklog worklog) {
+		this.worklog = worklog;
+	}
 
 }
