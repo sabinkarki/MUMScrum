@@ -29,4 +29,7 @@ public interface UserStoryService {
 
 	public List<UserStory> getReleaseBacklogByReleaseId(long id);
 
+
+	public void removeFromRelease(long id);
+
 }

@@ -77,7 +77,7 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
 	@Override
 	public List<UserStory> getProductBacklogByProductId(long productId) {
 		Session session = factory.openSession();
-		Query query = session.createQuery(" from UserStory where productId= :productId");
+		Query query = session.createQuery(" from UserStory where productId= :productId AND releaseId=0");
         query.setParameter("productId", productId);
         return query.list();
 		
@@ -102,6 +102,16 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
 		Query query = session.createQuery(" from UserStory where releaseId= :releaseId");
         query.setParameter("releaseId", releaseId);
         return query.list();
+	}
+
+	@Override
+	public void removeFromRelease(long id) {
+		Session session = factory.openSession();
+		UserStory userStory = (UserStory) session.get(UserStory.class, id);
+		userStory.setReleaseId(0);
+		session.save(userStory);
+		session.flush();
+		
 	}
 
 }

@@ -28,4 +28,6 @@ public interface UserStoryRepository {
 
 	public List<UserStory> getReleaseBacklogByReleaseId(long releaseId);
 
+	public void removeFromRelease(long id);
+
 }

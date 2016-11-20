@@ -25,6 +25,14 @@ public class SprintController {
 	/**
 	 * 
 	 */
+
+	@RequestMapping(value = { "/burndown" })
+	public String burndown() {
+		// userStoryService.delete(id);
+		return "burndowndisplay";
+
+	}
+
 	public SprintController() {
 
 	}
