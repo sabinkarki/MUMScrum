@@ -1,6 +1,5 @@
 package edu.awesome.mumscrum.controller;
 
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -57,7 +56,6 @@ public class UserStoryController {
 		model.addAttribute("userStory", userStory);
 		model.addAttribute("edit", true);
 		return "userstoryform";
-
 	}
 
 	@RequestMapping(value = { "/product/{productId}/userstory/{id}/update" }, method = RequestMethod.POST)
@@ -75,7 +73,8 @@ public class UserStoryController {
 	}
 
 	@RequestMapping(value = { "product/{productId}/userstory/new" }, method = RequestMethod.POST)
-	public String createUserstory(@PathVariable long productId,@Valid UserStory userStory,BindingResult result, ModelMap model) {
+	public String createUserstory(@PathVariable long productId, @Valid UserStory userStory, BindingResult result,
+			ModelMap model) {
 		if (result.hasErrors()) {
 			return "userstoryform";
 		} else {
@@ -117,12 +116,11 @@ public class UserStoryController {
 		}
 
 	}
-	
+
 	@RequestMapping(value = { "/developerUserStoryEffort" }, method = RequestMethod.GET)
 	public String developerUserStoryeffort(Model model, UserStory userstory) {
-		System.out.println(userStoryService.getUserStories().get(1).getTitle());
 		model.addAttribute("userstoryList", userStoryService.getUserStories());
-//sesssion user id to model attribute//		model.addAttribute("userId",)
+		// sesssion user id to model attribute// model.addAttribute("userId",)
 		return "effortlist";
 	}
 
@@ -131,22 +129,24 @@ public class UserStoryController {
 		UserStory userstory = userStoryService.getUserStory(id);
 		model.addAttribute("userstory", userstory);
 		return "effortform";
-
 	}
 
-	@RequestMapping(value = { "/userstoryEffort/{id}/update" }, method = RequestMethod.POST)
-	public String updateEffort(@PathVariable long id, UserStory userStory, BindingResult result,Model model) {
-		UserStory userstory = userStoryService.getUserStory(id);
+	@RequestMapping(value = { "/userstoryEffort/update" }, method = RequestMethod.POST)
+	public String updateEffort(@ModelAttribute("userstory") UserStory userStory, BindingResult result, Model model) {
+		System.out.println("Good*****************************");
+		UserStory userstoryTemp = userStoryService.getUserStory(userStory.getId());
+
+		userstoryTemp.setEstimationgEffortForDeveloper(userStory.getEstimationgEffortForDeveloper());
+		userstoryTemp.setEstimationgRemainingEffortForDeveloper(userStory.getEstimationgRemainingEffortForDeveloper());
+
 		if (result.hasErrors()) {
+			System.out.println("Has Error------------------->>>>>");
 			return "effortform";
 		} else {
 			userStoryService.update(userStory);
-			return developerUserStoryeffort(model, userstory) ;
+			return developerUserStoryeffort(model, userStory);
 		}
-
 	}
-
-	
 
 	@RequestMapping(value = { "delete/product/{productId}/userstory/{id}" })
 	public String deleteUserStory(@PathVariable long productId, @PathVariable long id) {
@@ -154,12 +154,11 @@ public class UserStoryController {
 		return "redirect:/product/" + productId;
 
 	}
-	
-	@RequestMapping(value = { "/product/{productId}/release/{releaseId}/userstory/{id}/remove" })
-	public String removeFromRelease(@PathVariable long productId,@PathVariable long releaseId, @PathVariable long id) {
-		userStoryService.removeFromRelease(id);
-		return "redirect:/releasebacklog/product/" + productId+"/release/" + releaseId;
 
+	@RequestMapping(value = { "/product/{productId}/release/{releaseId}/userstory/{id}/remove" })
+	public String removeFromRelease(@PathVariable long productId, @PathVariable long releaseId, @PathVariable long id) {
+		userStoryService.removeFromRelease(id);
+		return "redirect:/releasebacklog/product/" + productId + "/release/" + releaseId;
 	}
 
 }

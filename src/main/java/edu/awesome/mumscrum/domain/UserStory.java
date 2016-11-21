@@ -26,10 +26,8 @@ public class UserStory {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@NotBlank
 	private String title;
 
-	@NotBlank
 	private String content;
 
 	private long productId;

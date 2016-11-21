@@ -13,57 +13,65 @@
 <h:header />
 </head>
 <body>
-	
-		<div id="page-wrapper">
-			<div class="container-fluid">
-				<!-- Page Heading -->
-				<div class="row">
-					<div class="col-lg-12">
-						<h1 class="page-header">Add/Edit Effort</h1>
-					</div>
+
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Add/Edit Effort</h1>
 				</div>
-				<!-- /.row -->
-				<div class="row">
-					<div class="col-lg-6">
-						<form:form role="form" method="POST" modelAttribute="userstory" id="userstory" >
-							<div class="form-group">
-							 	<label>Title</label>
-								<form:input path="title" class="form-control" value="${title}" readonly="true"/>
-								<form:errors path="title" cssClass="error" />
-							</div>
-							<div class="form-group">
-								<label>Estimate Effort</label>
-								<form:input path="estimationgEffortForDeveloper" class="form-control"  value="${estimatedEffort }"/>
-								<form:errors path="estimationgEffortForDeveloper" cssClass="error"  />
-							</div>
-							<div class="form-group">
-								<label>Remaining Effort</label>
-								<form:input path="estimationgRemainingEffortForDeveloper" class="form-control" value="${remainingEffort }"  />
-								<form:errors path="estimationgRemainingEffortForDeveloper" cssClass="error" />
-							</div>
-							<c:choose>
-								<c:when test="${edit}">
-									<button type="submit" class="btn btn-info">Update</button>
-								</c:when>
-								<c:otherwise>
-									<button type="submit" class="btn btn-info">Save</button>
-
-								</c:otherwise>
-							</c:choose>
-
-
-						</form:form>
-
-					</div>
-				</div>
-				<!-- /.row -->
-
-
 			</div>
-			<!-- /.container-fluid -->
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-6">
+					<form:form role="form" method="POST"
+						action="/mumscrum/userstoryEffort/update"
+						modelAttribute="userstory" id="userstory">
+						<form:hidden path="id" value="${id}" />
+						<div class="form-group">
+							<label>Title</label>
+							<form:input path="title" class="form-control" value="${title}"
+								readonly="true" />
+							<form:errors path="title" cssClass="error" />
+						</div>
+						<div class="form-group">
+							<label>Estimate Effort</label>
+							<form:input path="estimationgEffortForDeveloper"
+								class="form-control" value="${estimatedEffort }" />
+							<form:errors path="estimationgEffortForDeveloper"
+								cssClass="error" />
+						</div>
+						<div class="form-group">
+							<label>Remaining Effort</label>
+							<form:input path="estimationgRemainingEffortForDeveloper"
+								class="form-control" value="${remainingEffort }" />
+							<form:errors path="estimationgRemainingEffortForDeveloper"
+								cssClass="error" />
+						</div>
+						<c:choose>
+							<c:when test="${edit}">
+								<button type="submit" class="btn btn-info">Update</button>
+							</c:when>
+							<c:otherwise>
+								<button type="submit" class="btn btn-info">Save</button>
+
+							</c:otherwise>
+						</c:choose>
+
+
+					</form:form>
+
+				</div>
+			</div>
+			<!-- /.row -->
+
 
 		</div>
-		<!-- /#page-wrapper -->
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- /#page-wrapper -->
 
 
 

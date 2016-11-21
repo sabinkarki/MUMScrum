@@ -21,11 +21,6 @@ public class HomeController {
 	private ProductService productService;
 	
 	@RequestMapping(value="/")
-	public String getHome(){
-		return "home";
-	}
-	
-	@RequestMapping(value="/home")
 	public String home(Model model) {
 		List<Product> productList = productService.getProducts();
 		if (productList.isEmpty()) {
