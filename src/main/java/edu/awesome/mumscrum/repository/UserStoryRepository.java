@@ -7,10 +7,6 @@ import java.util.List;
 
 import edu.awesome.mumscrum.domain.UserStory;
 
-/**
- * @author prabinadhikari
- *
- */
 public interface UserStoryRepository {
 	public void save(UserStory userStory);
 

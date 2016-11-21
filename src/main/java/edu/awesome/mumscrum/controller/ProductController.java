@@ -3,10 +3,8 @@ package edu.awesome.mumscrum.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -37,7 +35,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = { "product/new" }, method = RequestMethod.POST)
-	public String createProduct(@Valid Product product, BindingResult result, ModelMap model) {
+	public String newProduct(@Valid Product product, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "productform";
 		} else {
@@ -50,7 +48,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/{id}")
-	public String showProduct(@PathVariable long id, Model model){
+	public String showProductBacklog(@PathVariable long id, Model model){
 		Product product = productService.findById(id);
 		List<UserStory> productBacklog = userStoryService.getProductBacklogByProductId(id); 
 		System.out.println(productBacklog);

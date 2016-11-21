@@ -11,6 +11,6 @@
 	<li class="divider"></li>
 
 </c:forEach>
-<li><a href="<c:url value='/product/new'/>"><i class="fa fa-fw fa-envelope"></i> Create product</a></li>
+<li><a href="<c:url value='/product/new'/>">Add new product</a></li>
 
 

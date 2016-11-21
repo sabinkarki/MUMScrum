@@ -12,10 +12,6 @@ import org.springframework.stereotype.Service;
 import edu.awesome.mumscrum.domain.Release;
 import edu.awesome.mumscrum.repository.ReleaseRepository;
 
-/**
- * @author prabinadhikari
- *
- */
 @Service
 public class ReleaseServiceImpl implements ReleaseService {
 

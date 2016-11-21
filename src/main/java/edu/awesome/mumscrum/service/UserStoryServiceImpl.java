@@ -13,10 +13,6 @@ import org.springframework.stereotype.Service;
 import edu.awesome.mumscrum.domain.UserStory;
 import edu.awesome.mumscrum.repository.UserStoryRepository;
 
-/**
- * @author prabinadhikari
- *
- */
 @Service
 public class UserStoryServiceImpl implements UserStoryService {
 

@@ -14,10 +14,6 @@ import org.springframework.stereotype.Repository;
 
 import edu.awesome.mumscrum.domain.UserStory;
 
-/**
- * @author prabinadhikari
- *
- */
 @Repository
 public class UserStoryRepositoryImpl implements UserStoryRepository {
 	@Inject

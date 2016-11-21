@@ -51,7 +51,7 @@ public class UserStoryController {
 	}
 
 	@RequestMapping(value = { "/product/{productId}/userstory/{id}/update" }, method = RequestMethod.GET)
-	public String newUserstory(@PathVariable long productId, @PathVariable long id, Model model) {
+	public String updateUserstory(@PathVariable long productId, @PathVariable long id, Model model) {
 		UserStory userStory = userStoryService.getUserStory(id);
 		model.addAttribute("userStory", userStory);
 		model.addAttribute("edit", true);
@@ -59,7 +59,7 @@ public class UserStoryController {
 	}
 
 	@RequestMapping(value = { "/product/{productId}/userstory/{id}/update" }, method = RequestMethod.POST)
-	public String updatestory(@PathVariable long productId, @PathVariable long id,
+	public String updateUserstory(@PathVariable long productId, @PathVariable long id,
 			@ModelAttribute("userstory") UserStory userStory, BindingResult result) {
 		if (result.hasErrors()) {
 			return "userstoryform";
@@ -86,7 +86,7 @@ public class UserStoryController {
 
 	@RequestMapping(value = { "/movetorelease/userstory/{id}/release/{releaseId}" }, method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void createUserstory(@PathVariable long id, @PathVariable long releaseId) {
+	public void moveToRelease(@PathVariable long id, @PathVariable long releaseId) {
 		userStoryService.addToRelease(id, releaseId);
 
 	}

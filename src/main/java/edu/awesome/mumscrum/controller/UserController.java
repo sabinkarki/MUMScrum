@@ -23,7 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.awesome.mumscrum.domain.User;
 import edu.awesome.mumscrum.enums.Role;
 import edu.awesome.mumscrum.service.UserService;
-import edu.awesome.mumscrum.validation.UserProfileValidator;
 import edu.awesome.mumscrum.validation.UserValidator;
 
 /**
