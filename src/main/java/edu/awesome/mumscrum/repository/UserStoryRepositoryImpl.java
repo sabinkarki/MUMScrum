@@ -40,7 +40,7 @@ public class UserStoryRepositoryImpl implements UserStoryRepository {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserStory> getUserStories() {
-		Session session = factory.getCurrentSession();
+		Session session = factory.openSession();
 		List<UserStory> userStories = session.createQuery("from UserStory").list();
 		session.close();
 		return userStories;

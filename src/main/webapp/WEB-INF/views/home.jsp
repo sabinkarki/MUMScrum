@@ -32,6 +32,8 @@
 					<div class="alert alert-info" role="alert">
 						No product added yet. <a href="<c:url value='/product/new' />">Add
 							product </a>|<a href="<c:url value='/register' />">Register </a>
+							|<a href="<c:url value='/developerUserStoryEffort' />">DevelopmentEffort </a>
+							
 					</div>
 				</div>
 			</div>

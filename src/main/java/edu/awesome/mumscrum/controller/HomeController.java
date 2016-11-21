@@ -15,12 +15,17 @@ import edu.awesome.mumscrum.service.ProductService;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/")
+/*@RequestMapping(value = "/")*/
 public class HomeController {
 	@Inject
 	private ProductService productService;
-
-	@RequestMapping
+	
+	@RequestMapping(value="/")
+	public String getHome(){
+		return "home";
+	}
+	
+	@RequestMapping(value="/home")
 	public String home(Model model) {
 		List<Product> productList = productService.getProducts();
 		if (productList.isEmpty()) {
