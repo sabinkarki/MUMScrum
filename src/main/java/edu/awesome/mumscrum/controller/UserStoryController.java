@@ -144,7 +144,8 @@ public class UserStoryController {
 			return "effortform";
 		} else {
 			userStoryService.update(userStory);
-			return developerUserStoryeffort(model, userStory);
+			return "redirect:/home";
+			
 		}
 	}
 

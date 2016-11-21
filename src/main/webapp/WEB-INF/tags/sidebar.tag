@@ -32,14 +32,14 @@
 
 			</ul></li>
 		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b
+			data-toggle="dropdown"><i class="fa fa-user"></i> <%=session.getAttribute("name")%> <b
 				class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>
 
 
 				<li class="divider"></li>
-				<li><a href="#"><i class="fa fa-fw fa-power-off"></i> Log
+				<li><a href="/mumscrum/logout"><i class="fa fa-fw fa-power-off"></i> Log
 						Out</a></li>
 			</ul></li>
 	</ul>
@@ -52,6 +52,8 @@
 					class="fa fa-fw fa-dashboard"></i>Product Backlog</a></li>
 			<li id="releaseSidebar" class="sidebarElements"><a href="<c:url value='/release/product/${selectedProductId}#release' />"><i
 					class="fa fa-fw fa-bar-chart-o"></i>Releases</a></li>
+			<li id="effortSidebar" class="sidebarElements"><a href="<c:url value='/developerUserStoryEffort' />"><i
+					class="fa fa-fw fa-bar-chart-o"></i>Estimate/Update Effort</a></li>
 
 		</ul>
 	</div>
