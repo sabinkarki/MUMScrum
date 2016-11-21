@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Login</h1>
-	<font color='red'><c:if test="${not empty error}">Unable to login: ${error}</c:if></font>
+	<font color='red'><c:if test="${not empty error}">${error}</c:if></font>
 	<form name="frmlogin" method="post" action="<spring:url value="/postLogin" />">
 		<table>
 			<tr>
