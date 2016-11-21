@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.awesome.mumscrum.domain.User;
 import edu.awesome.mumscrum.enums.Role;
 import edu.awesome.mumscrum.service.UserService;
+import edu.awesome.mumscrum.validation.UserProfileValidator;
 import edu.awesome.mumscrum.validation.UserValidator;
 
 /**
@@ -35,7 +36,7 @@ public class UserController {
 	@Inject
 	private UserService userService;
 
-	@InitBinder("userForm")
+	@InitBinder()
 	protected void initUserBinder(WebDataBinder binder) {
 		binder.setValidator(new UserValidator());
 	}
@@ -57,7 +58,6 @@ public class UserController {
 		}
 		try {
 			if (!userService.checkUsername(user.getUsername())) {
-
 				String tempPassword = generateString();
 				user.setPassword(tempPassword);
 				userService.save(user);
@@ -89,15 +89,36 @@ public class UserController {
 	}
 
 	public static String generateString() {
-		 String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-	        StringBuilder salt = new StringBuilder();
-	        Random rnd = new Random();
-	        while (salt.length() < 18) {
-	            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-	            salt.append(SALTCHARS.charAt(index));
-	        }
-	        String saltStr = salt.toString();
-	        return saltStr;
+		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		StringBuilder salt = new StringBuilder();
+		Random rnd = new Random();
+		while (salt.length() < 18) {
+			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+			salt.append(SALTCHARS.charAt(index));
+		}
+		String saltStr = salt.toString();
+		return saltStr;
+	}
+
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editUser(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("editUser", userService.getUser(id));
+		return "userEdit";
+	}
+
+	@RequestMapping(value = "/edit/update", method = RequestMethod.POST)
+
+	public String updateUser(@Valid @ModelAttribute("editUser") User user, BindingResult result,
+			RedirectAttributes redirect) {
+		if (result.hasErrors()) {
+			return "userEdit";
+		}
+		String pass = userService.getUser(user.getId()).getPassword();
+		user.setPassword(pass);
+		userService.update(user);
+		redirect.addFlashAttribute("users", userService.findAllUser());
+		redirect.addFlashAttribute("update", true);
+		return "redirect:/registerRedirect";
 	}
 
 }

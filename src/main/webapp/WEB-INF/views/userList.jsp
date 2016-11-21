@@ -14,9 +14,14 @@
 		<a href="/mumscrum/">Home</a>
 	</h1>
 
-	<div id="timer">
+	<div class="timer">
 		<c:if test="${success eq true }">
 			<div>Registration successfully</div>
+		</c:if>
+	</div>
+	<div class="timer">
+		<c:if test="${update eq true }">
+			<div>User Update successfully</div>
 		</c:if>
 	</div>
 	<table>
@@ -46,7 +51,7 @@
 	</table>
 	<script>
 		setTimeout(function() {
-			$('#timer').fadeOut('fast');
+			$('.timer').fadeOut('fast');
 		}, 2000);
 	</script>
 
