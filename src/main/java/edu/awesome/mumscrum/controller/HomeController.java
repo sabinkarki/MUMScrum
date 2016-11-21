@@ -20,10 +20,10 @@ public class HomeController {
 	@Inject
 	private ProductService productService;
 	
-	@RequestMapping(value="/")
+	/*@RequestMapping(value="/")
 	public String getHome(){
 		return "home";
-	}
+	}*/
 	
 	@RequestMapping(value="/home")
 	public String home(Model model) {
@@ -37,21 +37,9 @@ public class HomeController {
 
 		}
 
-
 	}
-
-	@RequestMapping(value = "/login")
-	public String loginPage() {
-		return "login";
-	}
-
 	@RequestMapping(value = "/403")
 	public String pageNotFound() {
 		return "404";
-	}
-
-	@RequestMapping(value = "/signup")
-	public String signUpPage() {
-		return "signup";
 	}
 }
