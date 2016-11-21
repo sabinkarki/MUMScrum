@@ -33,8 +33,10 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public void update(User user) {
-		// TODO Auto-generated method stub
-
+		Session session = factory.getCurrentSession();
+		// session.update(user);
+		session.merge(user);
+		session.flush();
 	}
 
 	@Override
@@ -49,8 +51,9 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public User getUser(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = factory.getCurrentSession();
+		User user = (User) session.get(User.class, id);
+		return user;
 	}
 
 	@Override

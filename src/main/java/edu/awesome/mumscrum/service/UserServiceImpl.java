@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void update(User user) {
 		// TODO Auto-generated method stub
-
+         userRepository.update(user);
 	}
 
 	@Override
@@ -42,8 +42,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUser(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getUser(id);
 	}
 
 	@Override
