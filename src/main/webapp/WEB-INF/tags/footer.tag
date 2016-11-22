@@ -23,7 +23,7 @@
 		$(".datepicker").datepicker();
 		$('.mumscrumDateField').datepicker({
 		    autoclose: true,
-		    format:"yyyy-mm-dd",
+		    format:"MM/dd/yyyy",
 		    startDate: date,
 		    todayHighlight: true,
 		});

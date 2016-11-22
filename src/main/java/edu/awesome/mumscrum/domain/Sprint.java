@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @author prabinadhikari
  *
@@ -29,9 +31,13 @@ public class Sprint {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<UserStory> userStories;
 
+	private String title;
+	
 	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date startDate;
 	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date endDate;
 
 	/**
@@ -90,4 +96,13 @@ public class Sprint {
 		this.endDate = endDate;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	
 }
